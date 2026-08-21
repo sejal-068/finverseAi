@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Insights - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ai-insights.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="brand-name">Finverse<span>AI</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="nav-group">
+            <span class="nav-label">Core Dashboard</span>
+            <ul class="nav-list">
+              <li>
+                <a href="dashboard.html" class="nav-link">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="transactions.html" class="nav-link">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Transactions</span>
+                </a>
+              </li>
+              <li>
+                <a href="categories.html" class="nav-link">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Categories</span>
+                </a>
+              </li>
+              <li>
+                <a href="budgets.html" class="nav-link">
+                  <i class="fa-solid fa-wallet"></i>
+                  <span>Budgets</span>
+                </a>
+              </li>
+              <li>
+                <a href="analytics.html" class="nav-link">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-label">AI Intelligence</span>
+            <ul class="nav-list">
+              <li>
+                <a href="ai-insights.html" class="nav-link active">
+                  <i class="fa-solid fa-brain"></i>
+                  <span>AI Insights</span>
+                  <span class="nav-badge">AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="financial-coach.html" class="nav-link">
+                  <i class="fa-solid fa-robot"></i>
+                  <span>Financial Coach</span>
+                  <span class="nav-badge" style="background: var(--primary);">Live</span>
+                </a>
+              </li>
+              <li>
+                <a href="reports.html" class="nav-link">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <ul class="nav-list">
+            <li>
+              <a href="profile.html" class="nav-link">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="nav-link" style="color: var(--danger);">
+                <i class="fa-solid fa-right-from-bracket" style="color: var(--danger);"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" title="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-greeting">
+            <h2>AI Intelligence Hub</h2>
+            <p>Behavioural machine learning analytics, predictive forecasts, and anomaly detection</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="header-action-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="dropdown">
+            <div class="user-profile-pill">
+              <div class="user-avatar">AS</div>
+              <div class="user-info">
+                <span class="user-name">Aarav Sharma</span>
+                <span class="user-role">Personal Plan</span>
+              </div>
+              <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
+            </div>
+            <div class="dropdown-menu user-dropdown-menu">
+              <a href="profile.html" class="dropdown-item"><i class="fa-regular fa-user"></i> My Profile</a>
+              <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-sliders"></i> Preferences</a>
+              <div class="dropdown-divider"></div>
+              <a href="login.html" class="dropdown-item text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- AI Hero Banner -->
+        <div class="ai-insights-hero">
+          <div class="ai-hero-content">
+            <div class="ai-model-status-chip">
+              <div class="ai-chip-dot"></div>
+              <span>FinverseML Core Engine v2.4 Active</span>
+            </div>
+            <h2>Autonomous Financial Intelligence</h2>
+            <p>
+              FinverseAI continuously analyzes your transaction flow, detects irregular merchant charges, flags high-risk discretionary spikes, and calculates potential monthly savings.
+            </p>
+          </div>
+          <div>
+            <a href="financial-coach.html" class="btn btn-secondary">
+              <i class="fa-solid fa-comments"></i> Chat with AI Coach
+            </a>
+          </div>
+        </div>
+
+        <!-- ML Predictive Highlight Cards -->
+        <div class="prediction-cards-row">
+          <!-- Next Month Forecast -->
+          <div class="pred-card forecast">
+            <div class="pred-header">
+              <span class="pred-title">Forecasted Next Month Expenses</span>
+              <i class="fa-solid fa-chart-line text-accent-cyan"></i>
+            </div>
+            <div class="pred-val text-primary-color" id="predExpenseVal">₹27,800</div>
+            <div class="pred-desc" id="predConfidenceTag">91% model confidence</div>
+          </div>
+
+          <!-- Anomaly Detection -->
+          <div class="pred-card anomaly">
+            <div class="pred-header">
+              <span class="pred-title">Anomaly Detected</span>
+              <i class="fa-solid fa-triangle-exclamation text-warning"></i>
+            </div>
+            <div class="pred-val text-warning" id="anomalyTitle" style="font-size: 1.25rem;">High Shopping Anomaly</div>
+            <div class="pred-desc" id="anomalyDesc">Shopping expenses are 42% higher than your normal 3-month average.</div>
+          </div>
+
+          <!-- Unlocked Savings Potential -->
+          <div class="pred-card savings">
+            <div class="pred-header">
+              <span class="pred-title">Optimized Monthly Savings Potential</span>
+              <i class="fa-solid fa-piggy-bank text-success"></i>
+            </div>
+            <div class="pred-val text-success" id="savingsOptVal">+₹3,200/mo</div>
+            <div class="pred-desc" id="savingsOptDesc">Trimming dining delivery and utility plans unlocks ₹3,200/mo.</div>
+          </div>
+        </div>
+
+        <!-- Interactive AI Savings Simulator -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">
+                <i class="fa-solid fa-sliders text-primary-color"></i> Interactive Savings Potential Simulator
+              </h3>
+              <p class="card-subtitle">Adjust discretionary cutbacks to project your annual compound savings</p>
+            </div>
+            <span class="badge badge-ai"><i class="fa-solid fa-calculator"></i> Real-time Simulator</span>
+          </div>
+
+          <div class="card-body">
+            <div class="grid-2" style="align-items: center;">
+              <div>
+                <div class="form-group mb-2">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">
+                    <span>Food & Dining Reduction</span>
+                    <span class="text-primary-color" id="simDiningPercent">15%</span>
+                  </div>
+                  <input type="range" id="simDiningSlider" min="0" max="50" value="15" step="5" style="width: 100%; accent-color: var(--primary);">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
+                    <span>0% (Current)</span>
+                    <span>50% Max</span>
+                  </div>
+                </div>
+
+                <div class="form-group mb-0">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">
+                    <span>Shopping & Gadgets Reduction</span>
+                    <span class="text-primary-color" id="simShoppingPercent">20%</span>
+                  </div>
+                  <input type="range" id="simShoppingSlider" min="0" max="50" value="20" step="5" style="width: 100%; accent-color: var(--primary);">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
+                    <span>0% (Current)</span>
+                    <span>50% Max</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Simulator Output Box -->
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center;">
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Estimated Monthly Addition</span>
+                <h3 style="font-size: 2rem; font-weight: 800; color: var(--success); margin: 0.25rem 0;" id="simMonthlyResult">₹1,705</h3>
+                
+                <div style="border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 0.75rem; display: flex; justify-content: space-between; font-size: 0.85rem;">
+                  <span style="color: var(--text-muted);">Projected 1-Year Wealth Growth:</span>
+                  <strong class="text-primary-color" id="simAnnualResult">₹20,460</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categorized Insight Cards Grid -->
+        <div class="insights-grid-section">
+          <div class="insight-category-block">
+            <h3><i class="fa-solid fa-wand-magic-sparkles text-primary-color"></i> AI Detected Spending Patterns & Trends</h3>
+            <div class="insight-cards-grid" id="aiInsightCardsContainer">
+              <!-- Injected via JavaScript -->
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/ai-insights.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/reports.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="brand-name">Finverse<span>AI</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="nav-group">
+            <span class="nav-label">Core Dashboard</span>
+            <ul class="nav-list">
+              <li>
+                <a href="dashboard.html" class="nav-link">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="transactions.html" class="nav-link">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Transactions</span>
+                </a>
+              </li>
+              <li>
+                <a href="categories.html" class="nav-link">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Categories</span>
+                </a>
+              </li>
+              <li>
+                <a href="budgets.html" class="nav-link">
+                  <i class="fa-solid fa-wallet"></i>
+                  <span>Budgets</span>
+                </a>
+              </li>
+              <li>
+                <a href="analytics.html" class="nav-link">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-label">AI Intelligence</span>
+            <ul class="nav-list">
+              <li>
+                <a href="ai-insights.html" class="nav-link">
+                  <i class="fa-solid fa-brain"></i>
+                  <span>AI Insights</span>
+                  <span class="nav-badge">AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="financial-coach.html" class="nav-link">
+                  <i class="fa-solid fa-robot"></i>
+                  <span>Financial Coach</span>
+                  <span class="nav-badge" style="background: var(--primary);">Live</span>
+                </a>
+              </li>
+              <li>
+                <a href="reports.html" class="nav-link active">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <ul class="nav-list">
+            <li>
+              <a href="profile.html" class="nav-link">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="nav-link" style="color: var(--danger);">
+                <i class="fa-solid fa-right-from-bracket" style="color: var(--danger);"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" title="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-greeting">
+            <h2>Financial Statements & Reports</h2>
+            <p>Generate formal summaries, income statements, and PDF reports</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="header-action-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="dropdown">
+            <div class="user-profile-pill">
+              <div class="user-avatar">AS</div>
+              <div class="user-info">
+                <span class="user-name">Aarav Sharma</span>
+                <span class="user-role">Personal Plan</span>
+              </div>
+              <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
+            </div>
+            <div class="dropdown-menu user-dropdown-menu">
+              <a href="profile.html" class="dropdown-item"><i class="fa-regular fa-user"></i> My Profile</a>
+              <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-sliders"></i> Preferences</a>
+              <div class="dropdown-divider"></div>
+              <a href="login.html" class="dropdown-item text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- Reports Control Toolbar -->
+        <div class="reports-filter-bar">
+          <div class="report-type-selector">
+            <button class="report-tab-btn" data-type="weekly">Weekly</button>
+            <button class="report-tab-btn active" data-type="monthly">Monthly</button>
+            <button class="report-tab-btn" data-type="yearly">Yearly</button>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-outline" id="generateReportBtn">
+              <i class="fa-solid fa-arrows-rotate"></i> Regenerate Report
+            </button>
+            <button class="btn btn-primary" id="printReportBtn">
+              <i class="fa-solid fa-print"></i> Download / Print PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- Printable Document Container -->
+        <div class="report-paper-container">
+          <!-- Document Header -->
+          <div class="report-doc-header">
+            <div>
+              <div class="brand-logo" style="margin-bottom: 0.5rem;">
+                <div class="brand-icon">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <span class="brand-name">Finverse<span>AI</span></span>
+              </div>
+              <h2 id="reportPeriodTitle">Monthly Financial Statement</h2>
+              <p>Generated for: <strong>Aarav Sharma</strong> (aarav.sharma@finverse.ai)</p>
+            </div>
+            <div class="report-period-tag">
+              <span class="badge badge-success mb-1">Audited Summary</span>
+              <h4 id="reportPeriodDates">01 Aug 2026 - 31 Aug 2026</h4>
+              <span>Currency: INR (₹)</span>
+            </div>
+          </div>
+
+          <!-- Executive Summary Numbers -->
+          <div class="report-exec-summary">
+            <div class="exec-stat-box">
+              <h5>Total Inflow (Income)</h5>
+              <div class="exec-val text-success" id="reportTotalIncome">₹0</div>
+            </div>
+            <div class="exec-stat-box">
+              <h5>Total Outflow (Expenses)</h5>
+              <div class="exec-val text-danger" id="reportTotalExpenses">₹0</div>
+            </div>
+            <div class="exec-stat-box">
+              <h5>Net Retained Savings</h5>
+              <div class="exec-val text-primary-color" id="reportNetSavings">₹0</div>
+            </div>
+            <div class="exec-stat-box">
+              <h5>Effective Savings Rate</h5>
+              <div class="exec-val text-secondary" id="reportSavingsRate">0%</div>
+            </div>
+          </div>
+
+          <!-- Summary Chart -->
+          <div class="card mb-3" style="box-shadow: none; border-color: var(--border-color);">
+            <div class="card-header">
+              <h4 class="card-title">Cash-Flow Distribution</h4>
+            </div>
+            <div class="card-body">
+              <div style="height: 250px; position: relative;">
+                <canvas id="reportSummaryChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Breakdown Statement Table -->
+          <div class="table-container mb-3" style="box-shadow: none;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Expense Category</th>
+                  <th>Total Transactions</th>
+                  <th>Amount Spent</th>
+                  <th>Share of Expenses</th>
+                  <th>Progress Ratio</th>
+                </tr>
+              </thead>
+              <tbody id="reportCategoryTableBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- AI Compliance & Auditor Note -->
+          <div style="background: var(--bg-subtle); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+            <strong><i class="fa-solid fa-brain text-secondary"></i> AI Audit Summary:</strong>
+            <p style="margin-top: 0.25rem;">
+              You maintained a healthy 52% net savings rate during this period. Primary outflow contributors were Rent & Utilities and Dining. All financial metrics comply with recommended emergency fund benchmarks.
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/reports.js"></script>
+</body>
+</html>

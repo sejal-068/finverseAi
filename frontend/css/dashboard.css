@@ -1,0 +1,350 @@
+/* ==========================================================================
+   FinverseAI - Dashboard Page Styles
+   ========================================================================== */
+
+/* Summary Metric Cards */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+
+.metric-card.balance::before { background: linear-gradient(to bottom, var(--primary), var(--secondary)); }
+.metric-card.income::before { background: var(--success); }
+.metric-card.expense::before { background: var(--danger); }
+.metric-card.savings::before { background: var(--accent-indigo); }
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.metric-title {
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.metric-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.metric-card.balance .metric-icon { background: var(--primary-light); color: var(--primary); }
+.metric-card.income .metric-icon { background: var(--success-light); color: var(--success-text); }
+.metric-card.expense .metric-icon { background: var(--danger-light); color: var(--danger-text); }
+.metric-card.savings .metric-icon { background: rgba(99, 102, 241, 0.12); color: var(--accent-indigo); }
+
+.metric-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.5px;
+}
+
+.metric-trend {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.725rem;
+}
+
+.trend-badge.up { background: var(--success-light); color: var(--success-text); }
+.trend-badge.down { background: var(--danger-light); color: var(--danger-text); }
+
+/* AI Recommendation Hero Banner */
+.ai-recommendation-banner {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-rec-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ai-pulse-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--secondary), var(--accent-indigo));
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-glow-indigo);
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+.ai-rec-title {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+[data-theme="dark"] .ai-rec-title {
+  color: #A5B4FC;
+}
+
+.ai-rec-text {
+  font-size: 0.925rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Dashboard Main Layout */
+.dashboard-grid-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.chart-card-container {
+  height: 320px;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+/* Financial Health Score Widget */
+.health-score-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.score-display-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.score-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(var(--primary) 0% 82%, var(--bg-subtle) 82% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.score-inner {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.score-denom {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.score-status-info h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.score-status-info p {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.health-factors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.factor-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.825rem;
+}
+
+.factor-icon {
+  margin-top: 2px;
+  font-size: 0.85rem;
+}
+
+.factor-item.positive .factor-icon { color: var(--success); }
+.factor-item.improve .factor-icon { color: var(--warning); }
+
+.factor-text {
+  color: var(--text-secondary);
+}
+
+/* Recent Transactions Mini List */
+.transaction-list-mini {
+  display: flex;
+  flex-direction: column;
+}
+
+.tx-item-mini {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tx-item-mini:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.tx-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.tx-cat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+}
+
+.tx-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tx-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tx-amount {
+  font-size: 0.925rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  text-align: right;
+}
+
+.tx-amount.income { color: var(--success); }
+.tx-amount.expense { color: var(--text-primary); }
+
+/* Upcoming Budgets Mini Widget */
+.budget-mini-item {
+  margin-bottom: 1.1rem;
+}
+
+.budget-mini-item:last-child {
+  margin-bottom: 0;
+}
+
+.budget-mini-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.825rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}

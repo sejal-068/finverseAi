@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Coach - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/financial-coach.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="brand-name">Finverse<span>AI</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="nav-group">
+            <span class="nav-label">Core Dashboard</span>
+            <ul class="nav-list">
+              <li>
+                <a href="dashboard.html" class="nav-link">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="transactions.html" class="nav-link">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Transactions</span>
+                </a>
+              </li>
+              <li>
+                <a href="categories.html" class="nav-link">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Categories</span>
+                </a>
+              </li>
+              <li>
+                <a href="budgets.html" class="nav-link">
+                  <i class="fa-solid fa-wallet"></i>
+                  <span>Budgets</span>
+                </a>
+              </li>
+              <li>
+                <a href="analytics.html" class="nav-link">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-label">AI Intelligence</span>
+            <ul class="nav-list">
+              <li>
+                <a href="ai-insights.html" class="nav-link">
+                  <i class="fa-solid fa-brain"></i>
+                  <span>AI Insights</span>
+                  <span class="nav-badge">AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="financial-coach.html" class="nav-link active">
+                  <i class="fa-solid fa-robot"></i>
+                  <span>Financial Coach</span>
+                  <span class="nav-badge" style="background: var(--primary);">Live</span>
+                </a>
+              </li>
+              <li>
+                <a href="reports.html" class="nav-link">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <ul class="nav-list">
+            <li>
+              <a href="profile.html" class="nav-link">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="nav-link" style="color: var(--danger);">
+                <i class="fa-solid fa-right-from-bracket" style="color: var(--danger);"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" title="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-greeting">
+            <h2>FinverseAI Financial Coach</h2>
+            <p>Your personal AI-powered financial advisor and savings strategist</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="header-action-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="dropdown">
+            <div class="user-profile-pill">
+              <div class="user-avatar">AS</div>
+              <div class="user-info">
+                <span class="user-name">Aarav Sharma</span>
+                <span class="user-role">Personal Plan</span>
+              </div>
+              <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
+            </div>
+            <div class="dropdown-menu user-dropdown-menu">
+              <a href="profile.html" class="dropdown-item"><i class="fa-regular fa-user"></i> My Profile</a>
+              <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-sliders"></i> Preferences</a>
+              <div class="dropdown-divider"></div>
+              <a href="login.html" class="dropdown-item text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <div class="coach-layout-container">
+          <!-- Chat Card Main -->
+          <div class="chat-card">
+            <!-- Header Bar -->
+            <div class="chat-header">
+              <div class="coach-identity">
+                <div class="coach-avatar">
+                  <i class="fa-solid fa-robot"></i>
+                  <div class="coach-status-dot"></div>
+                </div>
+                <div class="coach-info">
+                  <h3>FinverseAI Coach</h3>
+                  <p><i class="fa-solid fa-circle text-success" style="font-size: 0.6rem;"></i> Connected to your ₹58,000 Inflow Log</p>
+                </div>
+              </div>
+              <span class="badge badge-ai"><i class="fa-solid fa-bolt"></i> LLM Assistant Demo</span>
+            </div>
+
+            <!-- Messages Stream -->
+            <div class="chat-messages" id="chatMessagesContainer">
+              <!-- Default Welcome Message -->
+              <div class="chat-bubble-row ai">
+                <div class="message-avatar">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                  <div class="chat-bubble">
+                    Hello Aarav! I'm your <strong>FinverseAI Financial Coach</strong>. I have real-time visibility into your income, expenses, and active monthly budgets. How can I assist your financial journey today?
+                  </div>
+                  <div class="message-time">Just now • FinverseAI Coach</div>
+                </div>
+              </div>
+
+              <!-- Context Initial Analysis Bubble -->
+              <div class="chat-bubble-row ai">
+                <div class="message-avatar">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                  <div class="chat-bubble">
+                    <strong>Quick Spending Snapshot:</strong><br>
+                    • August Inflow: <strong>₹58,000</strong><br>
+                    • Current Expenses: <strong>₹27,800</strong><br>
+                    • Retained Surplus: <strong>₹30,200 (52% Savings Rate)</strong><br><br>
+                    You have great momentum! Feel free to ask about savings recommendations, budget allocations, or purchase viability.
+                  </div>
+                  <div class="message-time">Just now • FinverseAI Coach</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Suggestions Pills -->
+            <div class="coach-quick-prompts">
+              <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; padding-right: 0.25rem;">Suggested:</span>
+              <button class="coach-prompt-pill" data-prompt="How can I save more money?">
+                <i class="fa-solid fa-piggy-bank"></i> How can I save more?
+              </button>
+              <button class="coach-prompt-pill" data-prompt="Analyze my spending">
+                <i class="fa-solid fa-magnifying-glass-chart"></i> Analyze my spending
+              </button>
+              <button class="coach-prompt-pill" data-prompt="Can I afford a ₹5,000 purchase?">
+                <i class="fa-solid fa-bag-shopping"></i> Can I afford ₹5,000?
+              </button>
+              <button class="coach-prompt-pill" data-prompt="Give me a budget plan">
+                <i class="fa-solid fa-scale-balanced"></i> 50/30/20 Budget Plan
+              </button>
+              <button class="coach-prompt-pill" data-prompt="Predict my next month expenses">
+                <i class="fa-solid fa-crystal-ball"></i> Predict next month
+              </button>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="chat-input-area">
+              <form id="chatForm" class="chat-input-wrapper">
+                <input 
+                  type="text" 
+                  id="chatMessageInput" 
+                  placeholder="Ask your coach anything (e.g. 'Can I afford a ₹5,000 purchase?')..." 
+                  autocomplete="off"
+                  required
+                >
+                <button type="submit" class="chat-send-btn" title="Send message">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Coach Sidebar Recommendations & Guidelines -->
+          <div class="coach-sidebar-panel">
+            <div class="card" style="padding: 1.25rem;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-lightbulb text-warning"></i> Coach Capabilities
+              </h4>
+              <ul style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                <li>• <strong>Purchase Affordability:</strong> Checks whether a prospective expense disrupts your planned savings cushion.</li>
+                <li>• <strong>Leakage Detection:</strong> Identifies recurring discretionary dining, weekend outings, and unused subscriptions.</li>
+                <li>• <strong>Goal Alignment:</strong> Calculates compound monthly contributions needed for emergency fund milestones.</li>
+              </ul>
+            </div>
+
+            <div class="card" style="padding: 1.25rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(99, 102, 241, 0.08));">
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.35rem;">
+                <i class="fa-solid fa-shield-halved"></i> Privacy First
+              </h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                FinverseAI processes financial indicators with zero third-party data broker sharing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/financial-coach.js"></script>
+</body>
+</html>

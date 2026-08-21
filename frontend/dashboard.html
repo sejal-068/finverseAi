@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="brand-name">Finverse<span>AI</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="nav-group">
+            <span class="nav-label">Core Dashboard</span>
+            <ul class="nav-list">
+              <li>
+                <a href="dashboard.html" class="nav-link active">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="transactions.html" class="nav-link">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Transactions</span>
+                </a>
+              </li>
+              <li>
+                <a href="categories.html" class="nav-link">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Categories</span>
+                </a>
+              </li>
+              <li>
+                <a href="budgets.html" class="nav-link">
+                  <i class="fa-solid fa-wallet"></i>
+                  <span>Budgets</span>
+                </a>
+              </li>
+              <li>
+                <a href="analytics.html" class="nav-link">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-label">AI Intelligence</span>
+            <ul class="nav-list">
+              <li>
+                <a href="ai-insights.html" class="nav-link">
+                  <i class="fa-solid fa-brain"></i>
+                  <span>AI Insights</span>
+                  <span class="nav-badge">AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="financial-coach.html" class="nav-link">
+                  <i class="fa-solid fa-robot"></i>
+                  <span>Financial Coach</span>
+                  <span class="nav-badge" style="background: var(--primary);">Live</span>
+                </a>
+              </li>
+              <li>
+                <a href="reports.html" class="nav-link">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <!-- Sidebar AI Mini Assistant -->
+          <div class="sidebar-ai-card">
+            <div class="sidebar-ai-header">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>AI Engine Active</span>
+            </div>
+            <p class="sidebar-ai-text">Tracking INR expenses & calculating next month's forecast.</p>
+          </div>
+
+          <ul class="nav-list">
+            <li>
+              <a href="profile.html" class="nav-link">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="nav-link" style="color: var(--danger);">
+                <i class="fa-solid fa-right-from-bracket" style="color: var(--danger);"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" title="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-greeting">
+            <h2 id="dashboardGreeting">Good Morning, Aarav</h2>
+            <p id="dashboardDate">Thursday, 20 August 2026</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search transactions... (Ctrl+K)">
+          </div>
+
+          <button class="header-action-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="header-action-btn" title="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-dot"></span>
+          </div>
+
+          <!-- User Profile Dropdown Pill -->
+          <div class="dropdown">
+            <div class="user-profile-pill">
+              <div class="user-avatar">AS</div>
+              <div class="user-info">
+                <span class="user-name">Aarav Sharma</span>
+                <span class="user-role">Personal Plan</span>
+              </div>
+              <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
+            </div>
+
+            <div class="dropdown-menu user-dropdown-menu">
+              <a href="profile.html" class="dropdown-item">
+                <i class="fa-regular fa-user"></i> My Profile
+              </a>
+              <a href="settings.html" class="dropdown-item">
+                <i class="fa-solid fa-sliders"></i> Preferences
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="login.html" class="dropdown-item text-danger">
+                <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- AI Recommendation Alert Banner -->
+        <div class="ai-recommendation-banner">
+          <div class="ai-rec-left">
+            <div class="ai-pulse-icon">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <div>
+              <div class="ai-rec-title">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> AI Financial Recommendation
+              </div>
+              <p class="ai-rec-text" id="aiRecText">
+                Your food expenses increased by 18% this month. Reducing restaurant spending could help you save approximately ₹2,000.
+              </p>
+            </div>
+          </div>
+          <a href="financial-coach.html" class="btn btn-secondary btn-sm" style="white-space: nowrap;">
+            <i class="fa-solid fa-comments"></i> Ask Coach
+          </a>
+        </div>
+
+        <!-- Metric Summary Cards -->
+        <div class="metrics-grid">
+          <!-- Total Balance -->
+          <div class="metric-card balance">
+            <div class="metric-header">
+              <span class="metric-title">Total Balance</span>
+              <div class="metric-icon">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+            </div>
+            <div class="metric-value" id="metricTotalBalance">₹24,500</div>
+            <div class="metric-trend">
+              <span class="trend-badge up"><i class="fa-solid fa-arrow-up"></i> 12.4%</span>
+              <span>vs last month</span>
+            </div>
+          </div>
+
+          <!-- Total Income -->
+          <div class="metric-card income">
+            <div class="metric-header">
+              <span class="metric-title">Total Inflow</span>
+              <div class="metric-icon">
+                <i class="fa-solid fa-money-bill-trend-up"></i>
+              </div>
+            </div>
+            <div class="metric-value" id="metricTotalIncome">₹58,000</div>
+            <div class="metric-trend">
+              <span class="trend-badge up"><i class="fa-solid fa-arrow-up"></i> 8.0%</span>
+              <span>2 active sources</span>
+            </div>
+          </div>
+
+          <!-- Total Expenses -->
+          <div class="metric-card expense">
+            <div class="metric-header">
+              <span class="metric-title">Total Expenses</span>
+              <div class="metric-icon">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              </div>
+            </div>
+            <div class="metric-value" id="metricTotalExpenses">₹27,800</div>
+            <div class="metric-trend">
+              <span class="trend-badge down"><i class="fa-solid fa-arrow-up"></i> 4.2%</span>
+              <span>Food & Bills high</span>
+            </div>
+          </div>
+
+          <!-- Total Savings -->
+          <div class="metric-card savings">
+            <div class="metric-header">
+              <span class="metric-title">Net Savings</span>
+              <div class="metric-icon">
+                <i class="fa-solid fa-piggy-bank"></i>
+              </div>
+            </div>
+            <div class="metric-value" id="metricTotalSavings">₹30,200</div>
+            <div class="metric-trend">
+              <span class="trend-badge up"><i class="fa-solid fa-arrow-up"></i> 52%</span>
+              <span>Healthy Savings Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Charts & Main Grid -->
+        <div class="dashboard-grid-main">
+          <!-- Income vs Expenses Bar Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-chart-simple text-primary-color"></i> Income vs Expenses (INR)
+                </h3>
+                <p class="card-subtitle">Monthly cash-flow overview comparison</p>
+              </div>
+              <a href="analytics.html" class="btn btn-outline btn-sm">Full Analytics</a>
+            </div>
+            <div class="card-body">
+              <div class="chart-card-container">
+                <canvas id="incomeExpenseChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Financial Health Score Card -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-shield-heart text-success"></i> Financial Health
+                </h3>
+                <p class="card-subtitle">AI behaviour & cash flow rating</p>
+              </div>
+              <span class="badge badge-success font-bold">82/100</span>
+            </div>
+            <div class="card-body">
+              <div class="health-score-container">
+                <div class="score-display-row">
+                  <div class="score-circle">
+                    <div class="score-inner">
+                      <span class="score-num" id="healthScoreNum">82</span>
+                      <span class="score-denom">/ 100</span>
+                    </div>
+                  </div>
+                  <div class="score-status-info">
+                    <h4 id="healthScoreStatus">Strong Health</h4>
+                    <p id="healthScoreDesc">Your cash flow is stable with strong savings rate and timely bill payments.</p>
+                  </div>
+                </div>
+
+                <div class="health-factors-list" id="healthFactorsList">
+                  <!-- Injected via JavaScript -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Grid: Category Donut, Expense Trend & Recent Transactions -->
+        <div class="grid-3">
+          <!-- Spending by Category Donut -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-chart-pie text-secondary"></i> Expenses by Category
+                </h3>
+                <p class="card-subtitle">August 2026 distribution</p>
+              </div>
+              <a href="categories.html" class="btn btn-outline btn-sm">View All</a>
+            </div>
+            <div class="card-body">
+              <div style="height: 240px; position: relative;">
+                <canvas id="categoryDonutChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Expense Trend -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-arrow-trend-up text-primary-color"></i> Weekly Spending Pace
+                </h3>
+                <p class="card-subtitle">Current month breakdown</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div style="height: 240px; position: relative;">
+                <canvas id="expenseTrendChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming Budgets Progress -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-bullseye text-warning"></i> Active Budgets
+                </h3>
+                <p class="card-subtitle">Monthly category caps</p>
+              </div>
+              <a href="budgets.html" class="btn btn-outline btn-sm">Manage</a>
+            </div>
+            <div class="card-body">
+              <div id="dashboardBudgetList">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions Full Width Table / Card -->
+        <div class="card mt-3">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">
+                <i class="fa-solid fa-clock-rotate-left text-primary-color"></i> Recent Transactions
+              </h3>
+              <p class="card-subtitle">Latest debits and credits recorded</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="transactions.html" class="btn btn-outline btn-sm">View All Transactions</a>
+              <a href="transactions.html?action=add" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-plus"></i> Add Transaction
+              </a>
+            </div>
+          </div>
+          <div class="card-body" style="padding-top: 0.5rem;">
+            <div class="transaction-list-mini" id="recentTransactionsList">
+              <!-- Injected via JavaScript -->
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Core Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

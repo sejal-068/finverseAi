@@ -1,0 +1,142 @@
+/* ==========================================================================
+   FinverseAI - Categories Page Styles
+   ========================================================================== */
+
+.categories-top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.category-chart-wrapper {
+  height: 280px;
+  position: relative;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.cat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cat-info-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cat-icon-container {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.cat-title-wrap h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cat-title-wrap span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.cat-card-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.cat-spend-amount {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.cat-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cat-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Category Color Accents */
+.cat-food .cat-icon-container { background: #FEF3C7; color: #D97706; }
+.cat-shopping .cat-icon-container { background: #FCE7F3; color: #DB2777; }
+.cat-transport .cat-icon-container { background: #E0E7FF; color: #4F46E5; }
+.cat-bills .cat-icon-container { background: #FEE2E2; color: #DC2626; }
+.cat-entertainment .cat-icon-container { background: #EDE9FE; color: #7C3AED; }
+.cat-health .cat-icon-container { background: #CCFBF1; color: #0D9488; }
+.cat-education .cat-icon-container { background: #E0F2FE; color: #0284C7; }
+.cat-travel .cat-icon-container { background: #FFEDD5; color: #EA580C; }
+.cat-salary .cat-icon-container { background: #D1FAE5; color: #059669; }
+.cat-freelance .cat-icon-container { background: #CFFAFE; color: #0891B2; }
+.cat-other .cat-icon-container { background: #F1F5F9; color: #64748B; }
+
+/* Custom Category Icon Picker */
+.icon-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.icon-option {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.icon-option:hover, .icon-option.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}

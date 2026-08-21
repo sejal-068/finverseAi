@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="brand-name">Finverse<span>AI</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="nav-group">
+            <span class="nav-label">Core Dashboard</span>
+            <ul class="nav-list">
+              <li>
+                <a href="dashboard.html" class="nav-link">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="transactions.html" class="nav-link">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Transactions</span>
+                </a>
+              </li>
+              <li>
+                <a href="categories.html" class="nav-link">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Categories</span>
+                </a>
+              </li>
+              <li>
+                <a href="budgets.html" class="nav-link">
+                  <i class="fa-solid fa-wallet"></i>
+                  <span>Budgets</span>
+                </a>
+              </li>
+              <li>
+                <a href="analytics.html" class="nav-link active">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-label">AI Intelligence</span>
+            <ul class="nav-list">
+              <li>
+                <a href="ai-insights.html" class="nav-link">
+                  <i class="fa-solid fa-brain"></i>
+                  <span>AI Insights</span>
+                  <span class="nav-badge">AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="financial-coach.html" class="nav-link">
+                  <i class="fa-solid fa-robot"></i>
+                  <span>Financial Coach</span>
+                  <span class="nav-badge" style="background: var(--primary);">Live</span>
+                </a>
+              </li>
+              <li>
+                <a href="reports.html" class="nav-link">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <ul class="nav-list">
+            <li>
+              <a href="profile.html" class="nav-link">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="nav-link" style="color: var(--danger);">
+                <i class="fa-solid fa-right-from-bracket" style="color: var(--danger);"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" title="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-greeting">
+            <h2>Financial Analytics Hub</h2>
+            <p>Interactive multi-period cash flow, daily averages, and savings velocity</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="header-action-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="dropdown">
+            <div class="user-profile-pill">
+              <div class="user-avatar">AS</div>
+              <div class="user-info">
+                <span class="user-name">Aarav Sharma</span>
+                <span class="user-role">Personal Plan</span>
+              </div>
+              <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
+            </div>
+            <div class="dropdown-menu user-dropdown-menu">
+              <a href="profile.html" class="dropdown-item"><i class="fa-regular fa-user"></i> My Profile</a>
+              <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-sliders"></i> Preferences</a>
+              <div class="dropdown-divider"></div>
+              <a href="login.html" class="dropdown-item text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- Page Header & Date Range Selectors -->
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Cash Flow & Trends</h1>
+            <p>Real-time statistical evaluation in Indian Rupees (₹)</p>
+          </div>
+          <div class="date-range-pills">
+            <button class="range-pill-btn" data-range="7d">7 Days</button>
+            <button class="range-pill-btn active" data-range="30d">30 Days</button>
+            <button class="range-pill-btn" data-range="3m">3 Months</button>
+            <button class="range-pill-btn" data-range="6m">6 Months</button>
+            <button class="range-pill-btn" data-range="1y">1 Year</button>
+          </div>
+        </div>
+
+        <!-- 6 KPI Indicator Cards Grid -->
+        <div class="analytics-kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Monthly Income</span>
+            <div class="kpi-val text-success" id="kpiMonthlyIncome">₹0</div>
+            <span class="kpi-sub"><i class="fa-solid fa-arrow-trend-up text-success"></i> Inflow</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Monthly Expenses</span>
+            <div class="kpi-val text-danger" id="kpiMonthlyExpenses">₹0</div>
+            <span class="kpi-sub"><i class="fa-solid fa-arrow-trend-down text-danger"></i> Outflow</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Savings Rate</span>
+            <div class="kpi-val text-primary-color" id="kpiSavingsRate">0%</div>
+            <span class="kpi-sub">Target: > 30%</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Avg Daily Spend</span>
+            <div class="kpi-val" id="kpiAvgDaily">₹0</div>
+            <span class="kpi-sub">Past 30 days</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Top Category</span>
+            <div class="kpi-val" style="font-size: 1.1rem;" id="kpiHighestCategory">-</div>
+            <span class="kpi-sub">Highest expense</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Expense Growth</span>
+            <div class="kpi-val text-warning" style="font-size: 1.1rem;" id="kpiExpenseGrowth">-</div>
+            <span class="kpi-sub">MoM difference</span>
+          </div>
+        </div>
+
+        <!-- Primary Charts Grid: Cash Flow & Category Polar -->
+        <div class="analytics-charts-grid">
+          <!-- Multi-Month Cash Flow Bar Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-scale-balanced text-primary-color"></i> Cash Flow (Inflow vs Outflow vs Savings)
+                </h3>
+                <p class="card-subtitle">5-month trajectory comparison</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="analytics-chart-box">
+                <canvas id="analyticsCashFlowChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Polar Area Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-chart-pie text-secondary"></i> Category Share Breakdown
+                </h3>
+                <p class="card-subtitle">Proportional expense allocation</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="analytics-chart-box">
+                <canvas id="analyticsCategoryDistChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Charts Grid: Savings Trend & Daily Velocity -->
+        <div class="analytics-charts-grid">
+          <!-- Monthly Savings Trend Line Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-piggy-bank text-success"></i> Monthly Savings Velocity
+                </h3>
+                <p class="card-subtitle">Accumulation towards annual investment targets</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="analytics-chart-box">
+                <canvas id="analyticsSavingsTrendChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Spending Fluctuation Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">
+                  <i class="fa-solid fa-chart-column text-accent-indigo"></i> Daily Spending Volatility
+                </h3>
+                <p class="card-subtitle">Spike detection on high-outflow days</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="analytics-chart-box">
+                <canvas id="analyticsDailySpendingChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

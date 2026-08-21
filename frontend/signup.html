@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="auth-page">
+
+  <div class="auth-container signup-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <a href="index.html" class="auth-brand">
+          <div class="brand-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="brand-name">Finverse<span>AI</span></span>
+        </a>
+        <h1>Create Your Account</h1>
+        <p>Set up your AI financial profile and start mastering your money</p>
+      </div>
+
+      <form id="signupForm" class="auth-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="signupName">Full Name <span class="req">*</span></label>
+          <input 
+            type="text" 
+            id="signupName" 
+            class="form-control" 
+            placeholder="e.g. Aarav Sharma" 
+            required
+          >
+          <span class="form-error">Full name is required</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="signupEmail">Email Address <span class="req">*</span></label>
+          <input 
+            type="email" 
+            id="signupEmail" 
+            class="form-control" 
+            placeholder="e.g. aarav.sharma@example.com" 
+            required
+          >
+          <span class="form-error">Please enter a valid email</span>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="signupPassword">Password <span class="req">*</span></label>
+            <div class="password-input-wrapper">
+              <input 
+                type="password" 
+                id="signupPassword" 
+                class="form-control" 
+                placeholder="At least 8 characters" 
+                required
+              >
+              <button type="button" class="password-toggle-btn" data-target="signupPassword">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <!-- Strength Indicator -->
+            <div class="password-strength-container">
+              <div class="strength-bar-track">
+                <div class="strength-bar-segment"></div>
+                <div class="strength-bar-segment"></div>
+                <div class="strength-bar-segment"></div>
+                <div class="strength-bar-segment"></div>
+              </div>
+              <div class="strength-text">
+                <span id="strengthText">Password strength</span>
+              </div>
+            </div>
+            <span class="form-error">Password must be at least 8 characters</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="signupConfirmPassword">Confirm Password <span class="req">*</span></label>
+            <div class="password-input-wrapper">
+              <input 
+                type="password" 
+                id="signupConfirmPassword" 
+                class="form-control" 
+                placeholder="Re-enter password" 
+                required
+              >
+              <button type="button" class="password-toggle-btn" data-target="signupConfirmPassword">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <span class="form-error">Passwords must match</span>
+          </div>
+        </div>
+
+        <!-- Financial Setup Section -->
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">
+            Financial Setup <span style="font-weight: 400; color: var(--text-muted); font-size: 0.8rem;">(Optional)</span>
+          </h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Helps FinverseAI initialize personalized budget limits and AI coach baselines.
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="signupIncome">Estimated Monthly Income (INR ₹)</label>
+            <input 
+              type="number" 
+              id="signupIncome" 
+              class="form-control" 
+              placeholder="e.g. 50000" 
+              value="50000"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Primary Financial Goal</label>
+            <div class="goals-selection-grid">
+              <label class="goal-option">
+                <input type="radio" name="financialGoal" value="Save Money" checked>
+                <div class="goal-card">
+                  <i class="fa-solid fa-piggy-bank"></i>
+                  <span>Save Money</span>
+                </div>
+              </label>
+
+              <label class="goal-option">
+                <input type="radio" name="financialGoal" value="Reduce Expenses">
+                <div class="goal-card">
+                  <i class="fa-solid fa-scissors"></i>
+                  <span>Reduce Expenses</span>
+                </div>
+              </label>
+
+              <label class="goal-option">
+                <input type="radio" name="financialGoal" value="Build Emergency Fund">
+                <div class="goal-card">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <span>Emergency Fund</span>
+                </div>
+              </label>
+
+              <label class="goal-option">
+                <input type="radio" name="financialGoal" value="Investment">
+                <div class="goal-card">
+                  <i class="fa-solid fa-arrow-trend-up"></i>
+                  <span>Investment</span>
+                </div>
+              </label>
+
+              <label class="goal-option" style="grid-column: 1 / -1;">
+                <input type="radio" name="financialGoal" value="Debt Management">
+                <div class="goal-card">
+                  <i class="fa-solid fa-scale-balanced"></i>
+                  <span>Debt Management</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;">
+          <i class="fa-solid fa-rocket"></i> Create Free Account
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

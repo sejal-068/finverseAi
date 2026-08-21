@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <span class="brand-name">Finverse<span>AI</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="nav-group">
+            <span class="nav-label">Core Dashboard</span>
+            <ul class="nav-list">
+              <li>
+                <a href="dashboard.html" class="nav-link">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="transactions.html" class="nav-link">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Transactions</span>
+                </a>
+              </li>
+              <li>
+                <a href="categories.html" class="nav-link">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Categories</span>
+                </a>
+              </li>
+              <li>
+                <a href="budgets.html" class="nav-link">
+                  <i class="fa-solid fa-wallet"></i>
+                  <span>Budgets</span>
+                </a>
+              </li>
+              <li>
+                <a href="analytics.html" class="nav-link">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-label">AI Intelligence</span>
+            <ul class="nav-list">
+              <li>
+                <a href="ai-insights.html" class="nav-link">
+                  <i class="fa-solid fa-brain"></i>
+                  <span>AI Insights</span>
+                  <span class="nav-badge">AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="financial-coach.html" class="nav-link">
+                  <i class="fa-solid fa-robot"></i>
+                  <span>Financial Coach</span>
+                  <span class="nav-badge" style="background: var(--primary);">Live</span>
+                </a>
+              </li>
+              <li>
+                <a href="reports.html" class="nav-link">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <ul class="nav-list">
+            <li>
+              <a href="profile.html" class="nav-link">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="settings.html" class="nav-link active">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="nav-link" style="color: var(--danger);">
+                <i class="fa-solid fa-right-from-bracket" style="color: var(--danger);"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" title="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-greeting">
+            <h2>System Settings & Preferences</h2>
+            <p>Configure theme appearance, notification alerts, and data storage</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="header-action-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="dropdown">
+            <div class="user-profile-pill">
+              <div class="user-avatar">AS</div>
+              <div class="user-info">
+                <span class="user-name">Aarav Sharma</span>
+                <span class="user-role">Personal Plan</span>
+              </div>
+              <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
+            </div>
+            <div class="dropdown-menu user-dropdown-menu">
+              <a href="profile.html" class="dropdown-item"><i class="fa-regular fa-user"></i> My Profile</a>
+              <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-sliders"></i> Preferences</a>
+              <div class="dropdown-divider"></div>
+              <a href="login.html" class="dropdown-item text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Application Settings</h1>
+            <p>Customize your experience in FinverseAI</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Left Column: Appearance & Preferences -->
+          <div>
+            <!-- Appearance Card -->
+            <div class="card mb-3">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-palette text-primary-color"></i> Appearance & Theme</h3>
+              </div>
+              <div class="card-body">
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                  Choose your interface theme. Settings are instantly stored to localStorage.
+                </p>
+
+                <div class="grid-2">
+                  <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.75rem; border: 2px solid var(--border-color);">
+                    <input type="radio" name="appearanceTheme" value="light" checked style="accent-color: var(--primary);">
+                    <div>
+                      <h4 style="font-size: 0.95rem; font-weight: 700;"><i class="fa-solid fa-sun text-warning"></i> Light Mode</h4>
+                      <span style="font-size: 0.75rem; color: var(--text-muted);">Clean white theme</span>
+                    </div>
+                  </label>
+
+                  <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.75rem; border: 2px solid var(--border-color);">
+                    <input type="radio" name="appearanceTheme" value="dark" style="accent-color: var(--primary);">
+                    <div>
+                      <h4 style="font-size: 0.95rem; font-weight: 700;"><i class="fa-solid fa-moon text-secondary"></i> Dark Mode</h4>
+                      <span style="font-size: 0.75rem; color: var(--text-muted);">High-contrast dark</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Currency & Alerts Form -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-bell text-secondary"></i> Preferences & Notifications</h3>
+              </div>
+              <div class="card-body">
+                <form id="preferencesForm">
+                  <div class="form-group">
+                    <label class="form-label">Primary Currency</label>
+                    <input type="text" class="form-control" value="INR (₹) - Indian Rupee" disabled style="background: var(--bg-subtle);">
+                    <span class="form-hint">FinverseAI is fully formatted in Indian numbering standards (₹ Lakhs / Crores).</span>
+                  </div>
+
+                  <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.25rem;">
+                    <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                      <div>
+                        <strong style="font-size: 0.9rem; color: var(--text-primary);">Overbudget Warning Alerts</strong>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Notify when categories reach > 80% ceiling</p>
+                      </div>
+                      <input type="checkbox" checked style="accent-color: var(--primary); transform: scale(1.2);">
+                    </label>
+
+                    <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                      <div>
+                        <strong style="font-size: 0.9rem; color: var(--text-primary);">AI Weekly Spending Digest</strong>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Summary of weekly anomalous cash debits</p>
+                      </div>
+                      <input type="checkbox" checked style="accent-color: var(--primary); transform: scale(1.2);">
+                    </label>
+
+                    <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                      <div>
+                        <strong style="font-size: 0.9rem; color: var(--text-primary);">Privacy Masking Mode</strong>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Hide exact balances when presenting screen</p>
+                      </div>
+                      <input type="checkbox" style="accent-color: var(--primary); transform: scale(1.2);">
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">
+                    <i class="fa-solid fa-check"></i> Save Preferences
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Security & Demo Data Management -->
+          <div>
+            <!-- Change Password Card -->
+            <div class="card mb-3">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-lock text-primary-color"></i> Security & Password</h3>
+              </div>
+              <div class="card-body">
+                <form id="securityPasswordForm">
+                  <div class="form-group">
+                    <label class="form-label" for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" class="form-control" placeholder="••••••••" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" class="form-control" placeholder="Minimum 8 characters" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="confirmNewPassword">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword" class="form-control" placeholder="Re-enter new password" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-outline" style="width: 100%;">
+                    Update Password
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Demo Data Management & Reset -->
+            <div class="card" style="border-color: rgba(239, 68, 68, 0.3);">
+              <div class="card-header" style="background: var(--danger-light);">
+                <h3 class="card-title text-danger"><i class="fa-solid fa-database"></i> Demo Storage Management</h3>
+              </div>
+              <div class="card-body">
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.25rem;">
+                  FinverseAI uses <strong>localStorage</strong> for client demo persistence. You can reset all transactions, categories, budgets, and metrics back to initial factory demo seed data anytime.
+                </p>
+
+                <div style="display: flex; gap: 0.75rem;">
+                  <button type="button" class="btn btn-danger" id="resetDemoDataBtn" style="flex: 1;">
+                    <i class="fa-solid fa-arrows-rotate"></i> Reset All Demo Data
+                  </button>
+                  <button type="button" class="btn btn-outline" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>
