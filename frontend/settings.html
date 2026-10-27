@@ -8,13 +8,14 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/alerts.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -24,10 +25,14 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <a href="dashboard.html" class="brand-logo">
-          <div class="brand-icon">
-            <i class="fa-solid fa-chart-line"></i>
+          <div class="finverse-logo-mark">
+            <div class="logo-circle c1"></div>
+            <div class="logo-circle c2"></div>
+            <div class="logo-circle c3"></div>
+            <div class="logo-circle c4"></div>
+            <div class="logo-sparkle"></div>
           </div>
-          <span class="brand-name">Finverse<span>AI</span></span>
+          <span class="brand-name finverse-brand">Finverse<span class="ai-suffix">AI</span></span>
         </a>
       </div>
 
@@ -94,6 +99,20 @@
               </li>
             </ul>
           </div>
+
+          <!-- Administration (Admin Only) -->
+          <div class="nav-group admin-only-nav" style="display: none;">
+            <span class="nav-label">Administration</span>
+            <ul class="nav-list">
+              <li>
+                <a href="user-management.html" class="nav-link">
+                  <i class="fa-solid fa-users-gear"></i>
+                  <span>User Management</span>
+                  <span class="nav-badge" style="background: var(--warning); color: #000;">Admin</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="sidebar-bottom">
@@ -142,9 +161,9 @@
 
           <div class="dropdown">
             <div class="user-profile-pill">
-              <div class="user-avatar">AS</div>
+              <div class="user-avatar"></div>
               <div class="user-info">
-                <span class="user-name">Aarav Sharma</span>
+                <span class="user-name"></span>
                 <span class="user-role">Personal Plan</span>
               </div>
               <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
@@ -220,7 +239,7 @@
                         <strong style="font-size: 0.9rem; color: var(--text-primary);">Overbudget Warning Alerts</strong>
                         <p style="font-size: 0.75rem; color: var(--text-muted);">Notify when categories reach > 80% ceiling</p>
                       </div>
-                      <input type="checkbox" checked style="accent-color: var(--primary); transform: scale(1.2);">
+                      <input type="checkbox" id="settingBudgetAlerts" checked style="accent-color: var(--primary); transform: scale(1.2);">
                     </label>
 
                     <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
@@ -228,15 +247,32 @@
                         <strong style="font-size: 0.9rem; color: var(--text-primary);">AI Weekly Spending Digest</strong>
                         <p style="font-size: 0.75rem; color: var(--text-muted);">Summary of weekly anomalous cash debits</p>
                       </div>
-                      <input type="checkbox" checked style="accent-color: var(--primary); transform: scale(1.2);">
+                      <input type="checkbox" id="settingWeeklyReport" checked style="accent-color: var(--primary); transform: scale(1.2);">
                     </label>
 
                     <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
                       <div>
-                        <strong style="font-size: 0.9rem; color: var(--text-primary);">Privacy Masking Mode</strong>
-                        <p style="font-size: 0.75rem; color: var(--text-muted);">Hide exact balances when presenting screen</p>
+                        <strong style="font-size: 0.9rem; color: var(--text-primary);">Email Notifications</strong>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Receive important financial updates via email</p>
                       </div>
-                      <input type="checkbox" style="accent-color: var(--primary); transform: scale(1.2);">
+                      <input type="checkbox" id="settingEmailNotifications" style="accent-color: var(--primary); transform: scale(1.2);">
+                    </label>
+
+                    <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                      <div>
+                        <strong style="font-size: 0.9rem; color: var(--text-primary);">🔔 Budget Alert Alarm</strong>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">Smooth acoustic chime alarm (30s) when 80%+ or over-budget threshold is reached</p>
+                        <button type="button" class="btn btn-outline btn-sm" id="btnTestSound" style="padding: 0.2rem 0.6rem; font-size: 0.75rem; border-radius: 6px; cursor: pointer;" onclick="if(window.BudgetAlertEngine) window.BudgetAlertEngine.testAlarmChime('danger');"><i class="fa-solid fa-play"></i> Preview Sound</button>
+                      </div>
+                      <input type="checkbox" id="settingSoundAlerts" checked style="accent-color: var(--primary); transform: scale(1.2);">
+                    </label>
+
+                    <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                      <div>
+                        <strong style="font-size: 0.9rem; color: var(--text-primary);">🤖 AI Overspending Prediction</strong>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Predict when you may exceed your budget based on spending patterns</p>
+                      </div>
+                      <input type="checkbox" id="settingAIPrediction" checked style="accent-color: var(--primary); transform: scale(1.2);">
                     </label>
                   </div>
 
@@ -279,22 +315,26 @@
               </div>
             </div>
 
-            <!-- Demo Data Management & Reset -->
+            <!-- Data & Account Management -->
             <div class="card" style="border-color: rgba(239, 68, 68, 0.3);">
-              <div class="card-header" style="background: var(--danger-light);">
-                <h3 class="card-title text-danger"><i class="fa-solid fa-database"></i> Demo Storage Management</h3>
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-database text-primary-color"></i> Data & Account Management</h3>
               </div>
               <div class="card-body">
                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.25rem;">
-                  FinverseAI uses <strong>localStorage</strong> for client demo persistence. You can reset all transactions, categories, budgets, and metrics back to initial factory demo seed data anytime.
+                  Export your financial data or permanently delete your account. Exported data will be downloaded as a JSON file.
                 </p>
 
-                <div style="display: flex; gap: 0.75rem;">
-                  <button type="button" class="btn btn-danger" id="resetDemoDataBtn" style="flex: 1;">
-                    <i class="fa-solid fa-arrows-rotate"></i> Reset All Demo Data
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <button type="button" class="btn btn-outline" id="exportDataBtn" style="width: 100%;">
+                    <i class="fa-solid fa-download"></i> Export All My Data
                   </button>
-                  <button type="button" class="btn btn-outline" id="logoutBtn">
+                  <button type="button" class="btn btn-outline" id="logoutBtn" style="width: 100%;">
                     <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+                  </button>
+                  <hr style="margin: 0.5rem 0; border-color: var(--border-color);">
+                  <button type="button" class="btn btn-danger" id="deleteAccountBtn" style="width: 100%;">
+                    <i class="fa-solid fa-trash"></i> Delete My Account
                   </button>
                 </div>
               </div>
@@ -311,6 +351,7 @@
   <!-- Scripts -->
   <script src="js/api.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/budget-alerts.js"></script>
   <script src="js/settings.js"></script>
 </body>
 </html>

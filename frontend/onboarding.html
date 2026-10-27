@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Financial Profile - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="onboarding-page">
+
+  <div class="onboarding-container">
+    <!-- Header -->
+    <div class="onboarding-header">
+      <a href="index.html" class="onboarding-brand">
+        <div class="finverse-logo-mark logo-lg">
+          <div class="logo-circle c1"></div>
+          <div class="logo-circle c2"></div>
+          <div class="logo-circle c3"></div>
+          <div class="logo-circle c4"></div>
+          <div class="logo-sparkle"></div>
+        </div>
+        <span class="brand-name finverse-brand">Finverse<span class="ai-suffix">AI</span></span>
+      </a>
+      <h1>Let's get to know your financial world.</h1>
+      <p>A few details will help FinverseAI make your financial guidance more relevant to you.</p>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="onboarding-progress-bar-container">
+      <div class="progress-header">
+        <span class="step-tag"><i class="fa-solid fa-sparkles"></i> Step <span id="currentStepNum">1</span> of 6</span>
+        <span id="currentStepTitle">About You</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="onboardingProgressBar" style="width: 16.6%;"></div>
+      </div>
+    </div>
+
+    <!-- Multi-Step Card -->
+    <div class="onboarding-card">
+      <form id="onboardingForm" novalidate>
+
+        <!-- STEP 1: ABOUT YOU -->
+        <div class="onboarding-step active" data-step="1">
+          <div class="step-title-block">
+            <span class="step-badge"><i class="fa-regular fa-user"></i> Step 1 of 6</span>
+            <h2>Tell us about yourself</h2>
+            <p>We'll use this to address you personally and provide relevant context.</p>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label" for="obFullName">Full Name <span class="req">*</span></label>
+            <input type="text" id="obFullName" class="form-control" placeholder="Enter your full name" required>
+            <span class="form-error">Please provide your name</span>
+          </div>
+
+          <div class="grid-2 mb-3">
+            <div class="form-group">
+              <label class="form-label" for="obAge">Age <span class="text-muted" style="font-weight: 400; font-size: 0.8rem;">(Optional)</span></label>
+              <input type="number" id="obAge" class="form-control" placeholder="e.g. 28" min="16" max="100">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="obGender">Gender <span class="text-muted" style="font-weight: 400; font-size: 0.8rem;">(Optional)</span></label>
+              <select id="obGender" class="form-control">
+                <option value="">Select option</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="obOccupation">Occupation / Field <span class="req">*</span></label>
+              <input type="text" id="obOccupation" class="form-control" placeholder="e.g. Software Engineer, Teacher, Designer" required>
+              <span class="form-error">Please enter your occupation</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="obCity">City / Location <span class="text-muted" style="font-weight: 400; font-size: 0.8rem;">(Optional)</span></label>
+              <input type="text" id="obCity" class="form-control" placeholder="e.g. Bengaluru, Mumbai, Delhi">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: YOUR INCOME -->
+        <div class="onboarding-step" data-step="2">
+          <div class="step-title-block">
+            <span class="step-badge"><i class="fa-solid fa-wallet"></i> Step 2 of 6</span>
+            <h2>Your monthly income</h2>
+            <p>This gives FinverseAI a baseline for calculating healthy savings and affordability.</p>
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="form-label" for="obMonthlyIncome">Estimated Monthly Take-Home Income <span class="req">*</span></label>
+            <div style="position: relative;">
+              <span style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--text-muted); font-size: 1.15rem;">₹</span>
+              <input type="number" id="obMonthlyIncome" class="form-control" style="padding-left: 2.25rem; font-size: 1.25rem; font-weight: 700;" placeholder="60,000" min="0" required>
+            </div>
+            <span class="form-error">Please enter a valid monthly income</span>
+            <small class="text-muted" style="display: block; margin-top: 0.35rem;">
+              You can adjust this anytime in your profile settings.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">How would you describe your primary income source? <span class="req">*</span></label>
+            <div class="chip-grid" id="incomeTypeChipGrid">
+              <div class="chip-btn selected" data-value="Salaried">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Salaried</span>
+              </div>
+              <div class="chip-btn" data-value="Self-employed">
+                <i class="fa-solid fa-laptop-code"></i>
+                <span>Self-employed</span>
+              </div>
+              <div class="chip-btn" data-value="Business">
+                <i class="fa-solid fa-building"></i>
+                <span>Business</span>
+              </div>
+              <div class="chip-btn" data-value="Freelance">
+                <i class="fa-solid fa-pen-nib"></i>
+                <span>Freelance</span>
+              </div>
+              <div class="chip-btn" data-value="Student">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Student</span>
+              </div>
+              <div class="chip-btn" data-value="Irregular">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Irregular income</span>
+              </div>
+              <div class="chip-btn" data-value="Other">
+                <i class="fa-solid fa-ellipsis"></i>
+                <span>Other</span>
+              </div>
+            </div>
+            <input type="hidden" id="obIncomeType" value="Salaried">
+          </div>
+        </div>
+
+        <!-- STEP 3: YOUR RESPONSIBILITIES -->
+        <div class="onboarding-step" data-step="3">
+          <div class="step-title-block">
+            <span class="step-badge"><i class="fa-solid fa-people-roof"></i> Step 3 of 6</span>
+            <h2>Your responsibilities</h2>
+            <p>Understanding who depends on your finances helps us recommend realistic buffers.</p>
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="form-label">How many people financially depend on you?</label>
+            <div class="dependents-selector-row" id="dependentsSelectorRow">
+              <div class="dep-btn selected" data-value="0">
+                0
+                <span>Just me</span>
+              </div>
+              <div class="dep-btn" data-value="1">
+                1
+                <span>Person</span>
+              </div>
+              <div class="dep-btn" data-value="2">
+                2
+                <span>People</span>
+              </div>
+              <div class="dep-btn" data-value="3">
+                3
+                <span>People</span>
+              </div>
+              <div class="dep-btn" data-value="4">
+                4+
+                <span>People</span>
+              </div>
+            </div>
+            <input type="hidden" id="obDependents" value="0">
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label" for="obDependentsContext">Relationship / Context <span class="text-muted" style="font-weight: 400; font-size: 0.8rem;">(Optional)</span></label>
+            <input type="text" id="obDependentsContext" class="form-control" placeholder="e.g. Children, Elderly parents, Spouse">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="obRecurringResponsibilities">Major recurring commitments <span class="text-muted" style="font-weight: 400; font-size: 0.8rem;">(Optional)</span></label>
+            <input type="text" id="obRecurringResponsibilities" class="form-control" placeholder="e.g. House rent, Education fees, Car EMI">
+          </div>
+        </div>
+
+        <!-- STEP 4: YOUR FINANCIAL GOALS -->
+        <div class="onboarding-step" data-step="4">
+          <div class="step-title-block">
+            <span class="step-badge"><i class="fa-solid fa-bullseye"></i> Step 4 of 6</span>
+            <h2>What are you working toward?</h2>
+            <p>Select what's most important to you right now. You can pick multiple goals.</p>
+          </div>
+
+          <div class="goal-cards-grid" id="goalsGrid">
+            <div class="goal-card selected" data-goal="Build emergency savings">
+              <div class="goal-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="goal-card-content">
+                <h4>Build emergency savings</h4>
+                <p>Create a 3–6 month reserve cushion</p>
+              </div>
+              <div class="goal-card-check"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="goal-card" data-goal="Save for a major purchase">
+              <div class="goal-card-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+              <div class="goal-card-content">
+                <h4>Save for a major purchase</h4>
+                <p>Gadget, vehicle, travel, or home</p>
+              </div>
+              <div class="goal-card-check"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="goal-card selected" data-goal="Reduce unnecessary spending">
+              <div class="goal-card-icon"><i class="fa-solid fa-scissors"></i></div>
+              <div class="goal-card-content">
+                <h4>Reduce unnecessary spending</h4>
+                <p>Trim discretionary dining and shopping</p>
+              </div>
+              <div class="goal-card-check"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="goal-card" data-goal="Manage monthly expenses">
+              <div class="goal-card-icon"><i class="fa-solid fa-receipt"></i></div>
+              <div class="goal-card-content">
+                <h4>Manage monthly expenses</h4>
+                <p>Keep outflows comfortably within limits</p>
+              </div>
+              <div class="goal-card-check"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="goal-card" data-goal="Pay off debt">
+              <div class="goal-card-icon"><i class="fa-solid fa-credit-card"></i></div>
+              <div class="goal-card-content">
+                <h4>Pay off debt</h4>
+                <p>Clear credit card balances or EMIs</p>
+              </div>
+              <div class="goal-card-check"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="goal-card" data-goal="Start investing">
+              <div class="goal-card-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+              <div class="goal-card-content">
+                <h4>Start investing</h4>
+                <p>Grow surplus with SIPs and index funds</p>
+              </div>
+              <div class="goal-card-check"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="goal-card" data-goal="Build consistent savings">
+              <div class="goal-card-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+              <div class="goal-card-content">
+                <h4>Build consistent savings</h4>
+                <p>Save a regular percentage each month</p>
+              </div>
+              <div class="goal-card-check"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+
+            <div class="goal-card" data-goal="Plan future expenses">
+              <div class="goal-card-icon"><i class="fa-solid fa-calendar-days"></i></div>
+              <div class="goal-card-content">
+                <h4>Plan future expenses</h4>
+                <p>Stay ahead of annual or upcoming bills</p>
+              </div>
+              <div class="goal-card-check"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: YOUR MONEY HABITS -->
+        <div class="onboarding-step" data-step="5">
+          <div class="step-title-block">
+            <span class="step-badge"><i class="fa-solid fa-compass"></i> Step 5 of 6</span>
+            <h2>Your money routine</h2>
+            <p>How would you describe your current approach to spending and budgeting?</p>
+          </div>
+
+          <div class="routine-cards-list" id="routineCardsList">
+            <div class="routine-card selected" data-value="I usually plan my spending">
+              <div class="routine-card-icon"><i class="fa-solid fa-list-check"></i></div>
+              <div class="routine-card-info">
+                <h4>I usually plan my spending</h4>
+                <p>I like having category budgets and checking in before large purchases.</p>
+              </div>
+            </div>
+
+            <div class="routine-card" data-value="I track some expenses">
+              <div class="routine-card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+              <div class="routine-card-info">
+                <h4>I track some expenses</h4>
+                <p>I notice major bills and roughly keep mental tabs on discretionary costs.</p>
+              </div>
+            </div>
+
+            <div class="routine-card" data-value="I mostly spend as needed">
+              <div class="routine-card-icon"><i class="fa-solid fa-wallet"></i></div>
+              <div class="routine-card-info">
+                <h4>I mostly spend as needed</h4>
+                <p>I cover bills as they arrive without rigid advance planning.</p>
+              </div>
+            </div>
+
+            <div class="routine-card" data-value="I'm just starting to manage my money">
+              <div class="routine-card-icon"><i class="fa-solid fa-seedling"></i></div>
+              <div class="routine-card-info">
+                <h4>I'm just starting to manage my money</h4>
+                <p>I'm looking for friendly, supportive guidance to build a steady routine.</p>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="obMoneyRoutine" value="I usually plan my spending">
+        </div>
+
+        <!-- STEP 6: MONTHLY FINANCIAL SNAPSHOT (CONFIRMATION) -->
+        <div class="onboarding-step" data-step="6">
+          <div class="step-title-block">
+            <span class="step-badge"><i class="fa-solid fa-circle-check"></i> Step 6 of 6</span>
+            <h2>Your financial snapshot</h2>
+            <p>Here is the context we'll use to personalize your forecasts, insights, and AI Coach.</p>
+          </div>
+
+          <div class="snapshot-card">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+              <div>
+                <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin: 0;" id="snapName">Your Name</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);" id="snapOccupationCity">Your Occupation • City</span>
+              </div>
+            </div>
+
+            <div class="snapshot-grid">
+              <div class="snapshot-item">
+                <div class="snapshot-item-label">Monthly Income</div>
+                <div class="snapshot-item-value" id="snapIncome">₹0</div>
+                <div class="snapshot-item-sub" id="snapIncomeType">Income Type</div>
+              </div>
+
+              <div class="snapshot-item">
+                <div class="snapshot-item-label">Dependents</div>
+                <div class="snapshot-item-value" id="snapDependents">0 (Just me)</div>
+                <div class="snapshot-item-sub" id="snapDepContext">Self-reliant buffer</div>
+              </div>
+
+              <div class="snapshot-item" style="grid-column: 1 / -1;">
+                <div class="snapshot-item-label">Key Financial Goals</div>
+                <div class="goals-tag-container" id="snapGoalsList">
+                  <span class="goal-tag"><i class="fa-solid fa-check"></i> Build emergency savings</span>
+                  <span class="goal-tag"><i class="fa-solid fa-check"></i> Reduce unnecessary spending</span>
+                </div>
+              </div>
+
+              <div class="snapshot-item" style="grid-column: 1 / -1;">
+                <div class="snapshot-item-label">Money Routine</div>
+                <div class="snapshot-item-sub" style="font-size: 0.88rem; font-weight: 600; color: var(--text-primary); margin: 0;" id="snapRoutine">
+                  I usually plan my spending
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-card); border: 1px dashed var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem; text-align: center; margin-bottom: 1rem;">
+            <p style="color: var(--text-secondary); font-size: 0.88rem; margin: 0;">
+              ✨ <strong>You're all set!</strong> We'll use this information to make FinverseAI more relevant to you. You can update these details anytime in your Profile.
+            </p>
+          </div>
+        </div>
+
+        <!-- Wizard Navigation Footer -->
+        <div class="wizard-footer">
+          <button type="button" class="btn-back" id="btnBackStep" style="display: none;">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+          <div style="margin-left: auto;">
+            <button type="button" class="btn-next" id="btnNextStep">
+              <span>Continue</span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/onboarding.js"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -25,10 +25,14 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <a href="dashboard.html" class="brand-logo">
-          <div class="brand-icon">
-            <i class="fa-solid fa-chart-line"></i>
+          <div class="finverse-logo-mark">
+            <div class="logo-circle c1"></div>
+            <div class="logo-circle c2"></div>
+            <div class="logo-circle c3"></div>
+            <div class="logo-circle c4"></div>
+            <div class="logo-sparkle"></div>
           </div>
-          <span class="brand-name">Finverse<span>AI</span></span>
+          <span class="brand-name finverse-brand">Finverse<span class="ai-suffix">AI</span></span>
         </a>
       </div>
 
@@ -95,6 +99,20 @@
               </li>
             </ul>
           </div>
+
+          <!-- Administration (Admin Only) -->
+          <div class="nav-group admin-only-nav" style="display: none;">
+            <span class="nav-label">Administration</span>
+            <ul class="nav-list">
+              <li>
+                <a href="user-management.html" class="nav-link">
+                  <i class="fa-solid fa-users-gear"></i>
+                  <span>User Management</span>
+                  <span class="nav-badge" style="background: var(--warning); color: #000;">Admin</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="sidebar-bottom">
@@ -143,9 +161,9 @@
 
           <div class="dropdown">
             <div class="user-profile-pill">
-              <div class="user-avatar">AS</div>
+              <div class="user-avatar"></div>
               <div class="user-info">
-                <span class="user-name">Aarav Sharma</span>
+                <span class="user-name"></span>
                 <span class="user-role">Personal Plan</span>
               </div>
               <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
@@ -189,18 +207,18 @@
               <span class="pred-title">Forecasted Next Month Expenses</span>
               <i class="fa-solid fa-chart-line text-accent-cyan"></i>
             </div>
-            <div class="pred-val text-primary-color" id="predExpenseVal">₹27,800</div>
-            <div class="pred-desc" id="predConfidenceTag">91% model confidence</div>
+            <div class="pred-val text-primary-color" id="predExpenseVal">₹0</div>
+            <div class="pred-desc" id="predConfidenceTag">Analyzing user data...</div>
           </div>
 
           <!-- Anomaly Detection -->
           <div class="pred-card anomaly">
             <div class="pred-header">
-              <span class="pred-title">Anomaly Detected</span>
+              <span class="pred-title">Anomaly Detection</span>
               <i class="fa-solid fa-triangle-exclamation text-warning"></i>
             </div>
-            <div class="pred-val text-warning" id="anomalyTitle" style="font-size: 1.25rem;">High Shopping Anomaly</div>
-            <div class="pred-desc" id="anomalyDesc">Shopping expenses are 42% higher than your normal 3-month average.</div>
+            <div class="pred-val text-warning" id="anomalyTitle" style="font-size: 1.25rem;">Checking Anomalies...</div>
+            <div class="pred-desc" id="anomalyDesc">Scanning your recent transactions for unusual patterns.</div>
           </div>
 
           <!-- Unlocked Savings Potential -->
@@ -209,8 +227,8 @@
               <span class="pred-title">Optimized Monthly Savings Potential</span>
               <i class="fa-solid fa-piggy-bank text-success"></i>
             </div>
-            <div class="pred-val text-success" id="savingsOptVal">+₹3,200/mo</div>
-            <div class="pred-desc" id="savingsOptDesc">Trimming dining delivery and utility plans unlocks ₹3,200/mo.</div>
+            <div class="pred-val text-success" id="savingsOptVal">₹0/mo</div>
+            <div class="pred-desc" id="savingsOptDesc">Calculating personalized cutback targets...</div>
           </div>
         </div>
 
@@ -221,7 +239,7 @@
               <h3 class="card-title">
                 <i class="fa-solid fa-sliders text-primary-color"></i> Interactive Savings Potential Simulator
               </h3>
-              <p class="card-subtitle">Adjust discretionary cutbacks to project your annual compound savings</p>
+              <p class="card-subtitle">Adjust discretionary cutbacks based on your actual spending</p>
             </div>
             <span class="badge badge-ai"><i class="fa-solid fa-calculator"></i> Real-time Simulator</span>
           </div>
@@ -257,11 +275,11 @@
               <!-- Simulator Output Box -->
               <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center;">
                 <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Estimated Monthly Addition</span>
-                <h3 style="font-size: 2rem; font-weight: 800; color: var(--success); margin: 0.25rem 0;" id="simMonthlyResult">₹1,705</h3>
+                <h3 style="font-size: 2rem; font-weight: 800; color: var(--success); margin: 0.25rem 0;" id="simMonthlyResult">₹0</h3>
                 
                 <div style="border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 0.75rem; display: flex; justify-content: space-between; font-size: 0.85rem;">
                   <span style="color: var(--text-muted);">Projected 1-Year Wealth Growth:</span>
-                  <strong class="text-primary-color" id="simAnnualResult">₹20,460</strong>
+                  <strong class="text-primary-color" id="simAnnualResult">₹0</strong>
                 </div>
               </div>
             </div>

@@ -48,42 +48,80 @@ async function generateReport(type) {
   try {
     const txs = await window.finverseAPI.getTransactions();
     const categories = await window.finverseAPI.getCategories();
-    const user = await window.finverseAPI.getUserProfile();
+
+    // Dynamic date ranges
+    const now = new Date();
+    const periodNameEl = document.getElementById('reportPeriodTitle');
+    const periodDatesEl = document.getElementById('reportPeriodDates');
+    const fmtDate = (d) => d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+
+    let startDate, endDate;
+
+    if (type === 'weekly') {
+      startDate = new Date(now);
+      startDate.setDate(now.getDate() - now.getDay());
+      startDate.setHours(0, 0, 0, 0);
+      endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + 6);
+      endDate.setHours(23, 59, 59, 999);
+      if (periodNameEl) periodNameEl.textContent = 'Weekly Financial Statement';
+      if (periodDatesEl) periodDatesEl.textContent = `${fmtDate(startDate)} - ${fmtDate(endDate)}`;
+    } else if (type === 'yearly') {
+      startDate = new Date(now.getFullYear(), 0, 1, 0, 0, 0, 0);
+      endDate = new Date(now.getFullYear(), 11, 31, 23, 59, 59, 999);
+      if (periodNameEl) periodNameEl.textContent = `Annual Financial Review ${now.getFullYear()}`;
+      if (periodDatesEl) periodDatesEl.textContent = `${fmtDate(startDate)} - ${fmtDate(endDate)}`;
+    } else {
+      startDate = new Date(now.getFullYear(), now.getMonth(), 1, 0, 0, 0, 0);
+      endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
+      if (periodNameEl) periodNameEl.textContent = 'Monthly Financial Statement';
+      if (periodDatesEl) periodDatesEl.textContent = `${fmtDate(startDate)} - ${fmtDate(endDate)}`;
+    }
+
+    // Filter transactions for selected period
+    const filteredTxs = txs.filter(t => {
+      const d = new Date(t.date);
+      return !isNaN(d.getTime()) && d >= startDate && d <= endDate;
+    });
 
     let totalIncome = 0;
     let totalExpenses = 0;
+    const catSpentMap = {};
+    const catCountMap = {};
 
-    txs.forEach(t => {
-      if (t.type === 'income') totalIncome += Number(t.amount);
-      if (t.type === 'expense') totalExpenses += Number(t.amount);
+    filteredTxs.forEach(t => {
+      const amt = Number(t.amount) || 0;
+      if (t.type === 'income') totalIncome += amt;
+      if (t.type === 'expense') {
+        totalExpenses += amt;
+        catSpentMap[t.category] = (catSpentMap[t.category] || 0) + amt;
+        catCountMap[t.category] = (catCountMap[t.category] || 0) + 1;
+      }
     });
 
     const netSavings = totalIncome - totalExpenses;
     const savingsRate = totalIncome > 0 ? ((netSavings / totalIncome) * 100).toFixed(1) : 0;
 
-    // Set Dates
-    const periodNameEl = document.getElementById('reportPeriodTitle');
-    const periodDatesEl = document.getElementById('reportPeriodDates');
+    // Set Stats
+    const incomeEl = document.getElementById('reportTotalIncome');
+    const expenseEl = document.getElementById('reportTotalExpenses');
+    const savingsEl = document.getElementById('reportNetSavings');
+    const rateEl = document.getElementById('reportSavingsRate');
+    if (incomeEl) incomeEl.textContent = formatINR(totalIncome);
+    if (expenseEl) expenseEl.textContent = formatINR(totalExpenses);
+    if (savingsEl) savingsEl.textContent = formatINR(netSavings);
+    if (rateEl) rateEl.textContent = savingsRate + '%';
 
-    if (type === 'weekly') {
-      if (periodNameEl) periodNameEl.textContent = 'Weekly Financial Statement';
-      if (periodDatesEl) periodDatesEl.textContent = '14 Aug 2026 - 20 Aug 2026';
-    } else if (type === 'yearly') {
-      if (periodNameEl) periodNameEl.textContent = 'Annual Financial Review 2026';
-      if (periodDatesEl) periodDatesEl.textContent = '01 Jan 2026 - 31 Dec 2026';
-    } else {
-      if (periodNameEl) periodNameEl.textContent = 'Monthly Financial Statement';
-      if (periodDatesEl) periodDatesEl.textContent = '01 Aug 2026 - 31 Aug 2026';
+    // Show empty state if no data in period
+    if (filteredTxs.length === 0) {
+      const tbody = document.getElementById('reportCategoryTableBody');
+      if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:2rem; color:var(--text-muted);">No transactions recorded in this period.</td></tr>';
+      renderReportChart(totalIncome, totalExpenses, netSavings);
+      return;
     }
 
-    // Set Stats
-    document.getElementById('reportTotalIncome').textContent = formatINR(totalIncome);
-    document.getElementById('reportTotalExpenses').textContent = formatINR(totalExpenses);
-    document.getElementById('reportNetSavings').textContent = formatINR(netSavings);
-    document.getElementById('reportSavingsRate').textContent = savingsRate + '%';
-
     // Render Categories Table
-    renderReportCategoryBreakdown(categories, totalExpenses);
+    renderReportCategoryBreakdown(categories, totalExpenses, catSpentMap, catCountMap);
 
     // Render Chart
     renderReportChart(totalIncome, totalExpenses, netSavings);
@@ -94,11 +132,24 @@ async function generateReport(type) {
   }
 }
 
-function renderReportCategoryBreakdown(categories, totalExpenses) {
+function renderReportCategoryBreakdown(categories, totalExpenses, catSpentMap = {}, catCountMap = {}) {
   const tbody = document.getElementById('reportCategoryTableBody');
   if (!tbody) return;
 
-  const expenseCats = categories.filter(c => c.type === 'expense' && c.spent > 0);
+  const expenseCats = categories
+    .filter(c => c.type === 'expense')
+    .map(c => {
+      const spent = catSpentMap[c.name] !== undefined ? catSpentMap[c.name] : (c.spent || 0);
+      const count = catCountMap[c.name] !== undefined ? catCountMap[c.name] : (c.count || 0);
+      const percentage = totalExpenses > 0 ? Number(((spent / totalExpenses) * 100).toFixed(1)) : 0;
+      return { ...c, spent, count, percentage };
+    })
+    .filter(c => c.spent > 0);
+
+  if (expenseCats.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No expense transactions in this period.</td></tr>';
+    return;
+  }
 
   tbody.innerHTML = expenseCats.map(c => {
     return `
@@ -122,6 +173,7 @@ function renderReportCategoryBreakdown(categories, totalExpenses) {
   }).join('');
 }
 
+
 function renderReportChart(income, expense, savings) {
   const ctx = document.getElementById('reportSummaryChart');
   if (!ctx) return;
@@ -137,7 +189,7 @@ function renderReportChart(income, expense, savings) {
       datasets: [{
         label: 'Amount (₹)',
         data: [income, expense, savings],
-        backgroundColor: ['#10B981', '#EF4444', '#6366F1'],
+        backgroundColor: ['#22A06B', '#E45858', '#5B4BDB'],
         borderRadius: 6,
         barPercentage: 0.5
       }]

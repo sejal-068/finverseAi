@@ -148,7 +148,7 @@ async function handleAddCategorySubmit(e) {
   const name = document.getElementById('catName').value.trim();
   const icon = document.getElementById('selectedCategoryIcon').value || 'fa-tag';
   const type = document.getElementById('catType').value || 'expense';
-  const color = document.getElementById('catColor').value || '#10B981';
+  const color = document.getElementById('catColor').value || '#22A06B';
 
   if (!name) {
     showToast('Please enter category name', 'warning');

@@ -1,6 +1,7 @@
 /* ==========================================================================
    FinverseAI - Reports Page Styles
-   ========================================================================== */
+   Aesthetic: Soft Light Pastel Fintech with Editorial Report Layout
+   ========================================================================= */
 
 .reports-filter-bar {
   display: flex;
@@ -8,11 +9,12 @@
   justify-content: space-between;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 1rem 1.5rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
   gap: 1rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .report-type-selector {
@@ -22,8 +24,8 @@
 }
 
 .report-tab-btn {
-  padding: 0.55rem 1.15rem;
-  border-radius: var(--radius-md);
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-full);
   background: var(--bg-subtle);
   color: var(--text-secondary);
   font-size: 0.85rem;
@@ -32,9 +34,15 @@
   transition: all var(--transition-fast);
 }
 
+.report-tab-btn:hover {
+  background: var(--bg-subtle-hover);
+  color: var(--text-primary);
+}
+
 .report-tab-btn.active {
   background: var(--primary);
   color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(91, 75, 219, 0.28);
 }
 
 /* Printable Report Paper Layout */
@@ -60,6 +68,7 @@
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .report-doc-title p {
@@ -75,7 +84,7 @@
 .report-period-tag h4 {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 .report-period-tag span {
@@ -94,23 +103,31 @@
 .exec-stat-box {
   background: var(--bg-subtle);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.exec-stat-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
 .exec-stat-box h5 {
   font-size: 0.775rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   margin-bottom: 0.35rem;
+  font-weight: 700;
 }
 
 .exec-stat-box .exec-val {
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-size: 1.55rem;
+  font-weight: 700;
   font-family: var(--font-heading);
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 /* Print Styling */

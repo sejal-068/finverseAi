@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/auth.css">
   <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body class="auth-page">
 
@@ -24,13 +27,26 @@
     <div class="auth-card">
       <div class="auth-header">
         <a href="index.html" class="auth-brand">
-          <div class="brand-icon">
-            <i class="fa-solid fa-chart-line"></i>
+          <div class="finverse-logo-mark logo-lg">
+            <div class="logo-circle c1"></div>
+            <div class="logo-circle c2"></div>
+            <div class="logo-circle c3"></div>
+            <div class="logo-circle c4"></div>
+            <div class="logo-sparkle"></div>
           </div>
-          <span class="brand-name">Finverse<span>AI</span></span>
+          <span class="brand-name finverse-brand">Finverse<span class="ai-suffix">AI</span></span>
         </a>
         <h1>Create Your Account</h1>
         <p>Set up your AI financial profile and start mastering your money</p>
+      </div>
+
+      <button type="button" class="btn-social" id="googleSignupBtn">
+        <i class="fa-brands fa-google text-danger"></i>
+        <span>Continue with Google</span>
+      </button>
+
+      <div class="auth-divider">
+        <span>OR SIGN UP WITH EMAIL</span>
       </div>
 
       <form id="signupForm" class="auth-form" novalidate>
@@ -40,7 +56,7 @@
             type="text" 
             id="signupName" 
             class="form-control" 
-            placeholder="e.g. Aarav Sharma" 
+            placeholder="Enter your full name" 
             required
           >
           <span class="form-error">Full name is required</span>
@@ -52,7 +68,7 @@
             type="email" 
             id="signupEmail" 
             class="form-control" 
-            placeholder="e.g. aarav.sharma@example.com" 
+            placeholder="e.g. yourname@example.com" 
             required
           >
           <span class="form-error">Please enter a valid email</span>
@@ -121,8 +137,7 @@
               type="number" 
               id="signupIncome" 
               class="form-control" 
-              placeholder="e.g. 50000" 
-              value="50000"
+              placeholder="e.g. 50000"
             >
           </div>
 

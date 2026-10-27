@@ -1,13 +1,14 @@
 /* ==========================================================================
    FinverseAI - AI Insights Page Styles
+   Aesthetic: Light Lavender & Peach Soft Glows, Pastel Status Indicators
    ========================================================================== */
 
-/* AI Hero Banner */
+/* AI Hero Banner — Light Indigo/Purple Soft Background */
 .ai-insights-hero {
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(16, 185, 129, 0.08) 50%, rgba(6, 182, 212, 0.08) 100%);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: var(--bg-ai-tint);
+  border: 1px solid rgba(91, 75, 219, 0.2);
   border-radius: var(--radius-xl);
-  padding: 2rem;
+  padding: 2.25rem;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
@@ -15,33 +16,37 @@
   gap: 2rem;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 24px rgba(91, 75, 219, 0.08);
 }
 
 .ai-hero-content h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .ai-hero-content p {
   color: var(--text-secondary);
   font-size: 0.95rem;
   max-width: 650px;
+  line-height: 1.5;
 }
 
 .ai-model-status-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 0.85rem;
-  background: var(--bg-card);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-surface);
+  border: 1px solid rgba(91, 75, 219, 0.25);
   border-radius: var(--radius-full);
   font-size: 0.775rem;
-  font-weight: 600;
-  color: var(--accent-indigo);
-  margin-bottom: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.85rem;
+  box-shadow: 0 2px 6px rgba(91, 75, 219, 0.12);
 }
 
 .ai-chip-dot {
@@ -49,7 +54,7 @@
   height: 8px;
   border-radius: 50%;
   background: var(--primary);
-  box-shadow: 0 0 8px var(--primary);
+  box-shadow: 0 0 8px rgba(91, 75, 219, 0.5);
 }
 
 /* Prediction KPI Highlights */
@@ -67,9 +72,16 @@
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.pred-card.forecast { border-top: 3px solid var(--accent-cyan); }
+.pred-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pred-card.forecast { border-top: 3px solid var(--accent-blue); }
 .pred-card.anomaly { border-top: 3px solid var(--warning); }
 .pred-card.savings { border-top: 3px solid var(--primary); }
 
@@ -81,24 +93,26 @@
 }
 
 .pred-title {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
 }
 
 .pred-val {
-  font-size: 1.65rem;
-  font-weight: 800;
+  font-size: 1.75rem;
+  font-weight: 700;
   font-family: var(--font-heading);
   color: var(--text-primary);
   margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
 }
 
 .pred-desc {
   font-size: 0.825rem;
   color: var(--text-secondary);
+  line-height: 1.4;
 }
 
 /* Insights Sections Tabs / Grid */
@@ -133,12 +147,13 @@
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
 .insight-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  border-color: rgba(91, 75, 219, 0.25);
 }
 
 .insight-card-top {
@@ -158,10 +173,10 @@
   flex-shrink: 0;
 }
 
-.insight-card.risk .insight-icon-box { background: var(--danger-light); color: var(--danger); }
-.insight-card.warning .insight-icon-box { background: var(--warning-light); color: var(--warning); }
+.insight-card.risk .insight-icon-box { background: var(--danger-light); color: var(--danger-text); }
+.insight-card.warning .insight-icon-box { background: var(--warning-light); color: var(--warning-text); }
 .insight-card.positive .insight-icon-box { background: var(--success-light); color: var(--success-text); }
-.insight-card.info .insight-icon-box { background: rgba(99, 102, 241, 0.12); color: var(--accent-indigo); }
+.insight-card.info .insight-icon-box { background: var(--primary-subtle); color: var(--primary); }
 
 .insight-body-text h4 {
   font-size: 1rem;
@@ -177,7 +192,7 @@
 }
 
 .insight-recommendation-box {
-  background: var(--bg-subtle);
+  background: var(--primary-subtle);
   border-left: 3px solid var(--primary);
   border-radius: var(--radius-sm);
   padding: 0.75rem 1rem;

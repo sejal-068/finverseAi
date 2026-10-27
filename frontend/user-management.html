@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FinverseAI User Data Management - Excel-style summary and individual user financial ledger inspection">
+  <title>User Data Management - FinverseAI</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core & Page Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/transactions.css">
+  <link rel="stylesheet" href="css/user-management.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="finverse-logo-mark">
+            <div class="logo-circle c1"></div>
+            <div class="logo-circle c2"></div>
+            <div class="logo-circle c3"></div>
+            <div class="logo-circle c4"></div>
+            <div class="logo-sparkle"></div>
+          </div>
+          <span class="brand-name finverse-brand">Finverse<span class="ai-suffix">AI</span></span>
+        </a>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="nav-group">
+            <span class="nav-label">Core Dashboard</span>
+            <ul class="nav-list">
+              <li>
+                <a href="dashboard.html" class="nav-link">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="transactions.html" class="nav-link">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Transactions</span>
+                </a>
+              </li>
+              <li>
+                <a href="categories.html" class="nav-link">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Categories</span>
+                </a>
+              </li>
+              <li>
+                <a href="budgets.html" class="nav-link">
+                  <i class="fa-solid fa-wallet"></i>
+                  <span>Budgets</span>
+                </a>
+              </li>
+              <li>
+                <a href="analytics.html" class="nav-link">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-label">AI Intelligence</span>
+            <ul class="nav-list">
+              <li>
+                <a href="ai-insights.html" class="nav-link">
+                  <i class="fa-solid fa-brain"></i>
+                  <span>AI Insights</span>
+                  <span class="nav-badge">AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="financial-coach.html" class="nav-link">
+                  <i class="fa-solid fa-robot"></i>
+                  <span>Financial Coach</span>
+                  <span class="nav-badge" style="background: var(--primary);">Live</span>
+                </a>
+              </li>
+              <li>
+                <a href="reports.html" class="nav-link">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Administration (Admin Only) -->
+          <div class="nav-group admin-only-nav">
+            <span class="nav-label">Administration</span>
+            <ul class="nav-list">
+              <li>
+                <a href="user-management.html" class="nav-link active">
+                  <i class="fa-solid fa-users-gear"></i>
+                  <span>User Management</span>
+                  <span class="nav-badge" style="background: var(--warning); color: #000;">Admin</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-bottom">
+          <!-- Sidebar AI Mini Assistant -->
+          <div class="sidebar-ai-card">
+            <div class="sidebar-ai-header">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Admin Console</span>
+            </div>
+            <p class="sidebar-ai-text">Authorized view: user data inspection &amp; Excel report generation.</p>
+          </div>
+
+          <ul class="nav-list">
+            <li>
+              <a href="profile.html" class="nav-link">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="nav-link text-danger logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" title="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-greeting">
+            <h2>User Data Management</h2>
+            <p>Admin Overview & Excel Ledger Inspection</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="header-action-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="dropdown">
+            <div class="user-profile-pill">
+              <div class="user-avatar"></div>
+              <div class="user-info">
+                <span class="user-name"></span>
+                <span class="user-role">Administrator</span>
+              </div>
+              <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
+            </div>
+            <div class="dropdown-menu user-dropdown-menu">
+              <a href="profile.html" class="dropdown-item"><i class="fa-regular fa-user"></i> My Profile</a>
+              <a href="user-management.html" class="dropdown-item"><i class="fa-solid fa-users-gear"></i> User Management</a>
+              <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-sliders"></i> Preferences</a>
+              <div class="dropdown-divider"></div>
+              <a href="login.html" class="dropdown-item text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Page Content -->
+      <main class="page-content">
+
+        <!-- Access Denied State (Hidden by default, shown if unauthorized) -->
+        <div id="accessDeniedState" class="access-denied-card" style="display: none;">
+          <div class="access-denied-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Administrator Access Restricted</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            This management console is restricted to authorized administrators only. Your account does not have admin privileges.
+          </p>
+          <a href="dashboard.html" class="btn btn-secondary">
+            <i class="fa-solid fa-house"></i> Return to Personal Dashboard
+          </a>
+        </div>
+
+
+        <!-- Loading State -->
+        <div id="adminLoadingState" style="text-align: center; padding: 4rem 1rem;">
+          <i class="fa-solid fa-circle-notch fa-spin text-primary" style="font-size: 2.2rem; margin-bottom: 1rem;"></i>
+          <p style="color: var(--text-muted); font-weight: 500;">Loading User Data Registry...</p>
+        </div>
+
+        <!-- VIEW A: ALL USERS SUMMARY TABLE (EXCEL-STYLE) -->
+        <div id="allUsersView" class="fade-in" style="display: none;">
+          <!-- Top Ribbon -->
+          <div class="admin-header-ribbon">
+            <div class="admin-title-area">
+              <h2><i class="fa-solid fa-table text-primary"></i> Registered Users Directory</h2>
+              <p>Excel-style overview of user accounts, transaction volumes, and financial balances</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <button id="refreshUsersBtn" class="btn btn-secondary btn-sm" title="Reload user data">
+                <i class="fa-solid fa-rotate-right"></i> Refresh
+              </button>
+              <button id="exportAllCsvBtn" class="btn btn-success btn-sm" title="Export all users to CSV">
+                <i class="fa-solid fa-file-excel"></i> Export All Users
+              </button>
+            </div>
+          </div>
+
+          <!-- Platform Aggregate Stats Strip -->
+          <div class="admin-stats-strip">
+            <div class="admin-stat-card">
+              <div>
+                <div class="admin-stat-label">Registered Users</div>
+                <div class="admin-stat-value" id="statTotalUsers">0</div>
+              </div>
+              <div class="admin-stat-icon" style="background: rgba(99, 102, 241, 0.12); color: var(--primary);">
+                <i class="fa-solid fa-users"></i>
+              </div>
+            </div>
+
+            <div class="admin-stat-card">
+              <div>
+                <div class="admin-stat-label">Platform Transactions</div>
+                <div class="admin-stat-value" id="statTotalTxns">0</div>
+              </div>
+              <div class="admin-stat-icon" style="background: rgba(14, 165, 233, 0.12); color: #0ea5e9;">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+            </div>
+
+            <div class="admin-stat-card">
+              <div>
+                <div class="admin-stat-label">Aggregate Inflow</div>
+                <div class="admin-stat-value text-success" id="statTotalInflow">₹0</div>
+              </div>
+              <div class="admin-stat-icon" style="background: rgba(16, 185, 129, 0.12); color: var(--success);">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+              </div>
+            </div>
+
+            <div class="admin-stat-card">
+              <div>
+                <div class="admin-stat-label">Aggregate Outflow</div>
+                <div class="admin-stat-value text-danger" id="statTotalOutflow">₹0</div>
+              </div>
+              <div class="admin-stat-icon" style="background: rgba(239, 68, 68, 0.12); color: var(--danger);">
+                <i class="fa-solid fa-arrow-trend-down"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Excel Toolbar Ribbon -->
+          <div class="excel-toolbar">
+            <div class="excel-search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="userSearchInput" placeholder="Search user by name, email, or user ID...">
+            </div>
+
+            <div class="excel-toolbar-actions">
+              <div style="display: flex; gap: 0.35rem;" id="filterPillsGroup">
+                <button class="btn btn-secondary btn-sm active" data-filter="all">All (<span id="countAll">0</span>)</button>
+                <button class="btn btn-secondary btn-sm" data-filter="active">With Txns (<span id="countActive">0</span>)</button>
+                <button class="btn btn-secondary btn-sm" data-filter="zero">Zero Activity (<span id="countZero">0</span>)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Excel-style Summary Table -->
+          <div class="excel-table-wrapper">
+            <div class="excel-table-scroll">
+              <table class="excel-table" id="allUsersTable">
+                <thead>
+                  <tr>
+                    <th style="width: 45px; text-align: center;">#</th>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email Address</th>
+                    <th style="text-align: center;">Transactions</th>
+                    <th style="text-align: right;">Total Income</th>
+                    <th style="text-align: right;">Total Expenses</th>
+                    <th style="text-align: right;">Net Savings</th>
+                    <th style="text-align: center;">Savings Rate</th>
+                    <th style="text-align: center; width: 130px;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW B: DETAILED USER VIEW (OPENED UPON CLICKING A USER) -->
+        <div id="userDetailView" class="fade-in" style="display: none;">
+          <!-- Navigation Toolbar -->
+          <div class="user-detail-navbar">
+            <button id="backToUsersBtn" class="btn btn-secondary">
+              <i class="fa-solid fa-arrow-left"></i> Back to Users
+            </button>
+
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span class="badge badge-ai" id="detailUserIdBadge">
+                <i class="fa-solid fa-id-badge"></i> User ID: <span id="detailUserIdText">—</span>
+              </span>
+              <button id="exportUserExcelBtn" class="btn btn-success">
+                <i class="fa-solid fa-file-excel"></i> Export to Excel
+              </button>
+            </div>
+          </div>
+
+          <div class="user-detail-container" style="margin-top: 1.25rem;">
+            <!-- Profile Overview Header Card -->
+            <div class="user-profile-header-card">
+              <div style="display: flex; align-items: center; gap: 1.25rem;">
+                <div class="user-profile-avatar-large" id="detailUserAvatar">U</div>
+                <div>
+                  <h3 style="font-size: 1.35rem; font-weight: 800;" id="detailUserName">—</h3>
+                  <div style="color: var(--text-muted); font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem; margin-top: 0.2rem;">
+                    <i class="fa-regular fa-envelope"></i> <span id="detailUserEmail">—</span>
+                    <span class="badge" id="detailAuthProviderBadge" style="background: var(--bg-secondary); font-size: 0.7rem;">Local</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Profile Metadata Grid -->
+              <div class="user-profile-meta-grid">
+                <div>
+                  <div class="meta-item-label">Monthly Income</div>
+                  <div class="meta-item-val" id="detailMonthlyIncome">₹0</div>
+                </div>
+                <div>
+                  <div class="meta-item-label">Primary Goal</div>
+                  <div class="meta-item-val" id="detailFinancialGoal">Save Money</div>
+                </div>
+                <div>
+                  <div class="meta-item-label">Occupation</div>
+                  <div class="meta-item-val" id="detailOccupation">—</div>
+                </div>
+                <div>
+                  <div class="meta-item-label">Dependents</div>
+                  <div class="meta-item-val" id="detailDependents">0</div>
+                </div>
+                <div>
+                  <div class="meta-item-label">Registered Date</div>
+                  <div class="meta-item-val" id="detailCreatedAt">—</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Financial Summary 5 KPI Cards -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Total Income</span>
+                  <div class="stat-icon icon-success">
+                    <i class="fa-solid fa-arrow-down-left"></i>
+                  </div>
+                </div>
+                <div class="stat-value text-success" id="detailTotalIncome">₹0</div>
+                <div class="stat-footer">
+                  <span style="font-size: 0.78rem; color: var(--text-muted);">Recorded Inflow</span>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Total Expenses</span>
+                  <div class="stat-icon icon-danger">
+                    <i class="fa-solid fa-arrow-up-right"></i>
+                  </div>
+                </div>
+                <div class="stat-value text-danger" id="detailTotalExpenses">₹0</div>
+                <div class="stat-footer">
+                  <span style="font-size: 0.78rem; color: var(--text-muted);">Recorded Outflow</span>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Net Savings</span>
+                  <div class="stat-icon icon-primary">
+                    <i class="fa-solid fa-wallet"></i>
+                  </div>
+                </div>
+                <div class="stat-value text-primary" id="detailNetSavings">₹0</div>
+                <div class="stat-footer">
+                  <span style="font-size: 0.78rem; color: var(--text-muted);">Remaining Cushion</span>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Savings Rate</span>
+                  <div class="stat-icon icon-info">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                  </div>
+                </div>
+                <div class="stat-value" id="detailSavingsRate">0%</div>
+                <div class="stat-footer">
+                  <span style="font-size: 0.78rem; color: var(--text-muted);">Income Retained</span>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Transactions</span>
+                  <div class="stat-icon icon-warning">
+                    <i class="fa-solid fa-list-check"></i>
+                  </div>
+                </div>
+                <div class="stat-value" id="detailTxnCount">0</div>
+                <div class="stat-footer">
+                  <span style="font-size: 0.78rem; color: var(--text-muted);">Logged in MongoDB</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Two-Column Grid: Category Spending Breakdown & Budgets -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem;">
+              <!-- Category-Wise Spending -->
+              <div class="card" style="padding: 1.25rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem;">
+                  <h4 style="font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-chart-pie text-primary"></i> Category-wise Spending
+                  </h4>
+                  <span class="badge" id="detailCategoryCountBadge" style="background: var(--bg-secondary);">0 Categories</span>
+                </div>
+                <div id="detailCategoriesList">
+                  <!-- Injected via JavaScript -->
+                </div>
+              </div>
+
+              <!-- Budgets & Compliance -->
+              <div class="card" style="padding: 1.25rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem;">
+                  <h4 style="font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-bullseye text-warning"></i> Configured Budgets
+                  </h4>
+                  <span class="badge" id="detailBudgetsCountBadge" style="background: var(--bg-secondary);">0 Budgets</span>
+                </div>
+                <div id="detailBudgetsList">
+                  <!-- Injected via JavaScript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- All Transactions Ledger Table -->
+            <div class="card" style="padding: 1.25rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                  <i class="fa-solid fa-receipt text-primary"></i> Complete Transactions Ledger
+                </h4>
+                <div style="position: relative; width: 260px;">
+                  <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem;"></i>
+                  <input type="text" id="txFilterInput" placeholder="Filter this user's transactions..." style="width: 100%; padding: 0.45rem 0.8rem 0.45rem 2.2rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.82rem;">
+                </div>
+              </div>
+
+              <div class="table-container" style="max-height: 520px; overflow-y: auto;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                      <th>Category</th>
+                      <th>Payment Method</th>
+                      <th style="text-align: right;">Amount</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody id="detailTransactionsTableBody">
+                    <!-- Injected via JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- AI Coach Conversations History -->
+            <div class="card" style="padding: 1.25rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                  <i class="fa-solid fa-robot text-primary"></i> AI Coach Conversations &amp; Insights History
+                </h4>
+                <span class="badge badge-ai" id="detailConversationsCountBadge">
+                  <i class="fa-solid fa-comments"></i> 0 Sessions
+                </span>
+              </div>
+              <div id="detailConversationsContainer">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/user-management.js"></script>
+</body>
+</html>

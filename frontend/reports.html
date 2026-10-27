@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -28,10 +28,14 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <a href="dashboard.html" class="brand-logo">
-          <div class="brand-icon">
-            <i class="fa-solid fa-chart-line"></i>
+          <div class="finverse-logo-mark">
+            <div class="logo-circle c1"></div>
+            <div class="logo-circle c2"></div>
+            <div class="logo-circle c3"></div>
+            <div class="logo-circle c4"></div>
+            <div class="logo-sparkle"></div>
           </div>
-          <span class="brand-name">Finverse<span>AI</span></span>
+          <span class="brand-name finverse-brand">Finverse<span class="ai-suffix">AI</span></span>
         </a>
       </div>
 
@@ -98,6 +102,20 @@
               </li>
             </ul>
           </div>
+
+          <!-- Administration (Admin Only) -->
+          <div class="nav-group admin-only-nav" style="display: none;">
+            <span class="nav-label">Administration</span>
+            <ul class="nav-list">
+              <li>
+                <a href="user-management.html" class="nav-link">
+                  <i class="fa-solid fa-users-gear"></i>
+                  <span>User Management</span>
+                  <span class="nav-badge" style="background: var(--warning); color: #000;">Admin</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="sidebar-bottom">
@@ -146,9 +164,9 @@
 
           <div class="dropdown">
             <div class="user-profile-pill">
-              <div class="user-avatar">AS</div>
+              <div class="user-avatar"></div>
               <div class="user-info">
-                <span class="user-name">Aarav Sharma</span>
+                <span class="user-name"></span>
                 <span class="user-role">Personal Plan</span>
               </div>
               <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
@@ -189,13 +207,17 @@
           <div class="report-doc-header">
             <div>
               <div class="brand-logo" style="margin-bottom: 0.5rem;">
-                <div class="brand-icon">
-                  <i class="fa-solid fa-chart-line"></i>
+                <div class="finverse-logo-mark">
+                  <div class="logo-circle c1"></div>
+                  <div class="logo-circle c2"></div>
+                  <div class="logo-circle c3"></div>
+                  <div class="logo-circle c4"></div>
+                  <div class="logo-sparkle"></div>
                 </div>
-                <span class="brand-name">Finverse<span>AI</span></span>
+                <span class="brand-name finverse-brand">Finverse<span class="ai-suffix">AI</span></span>
               </div>
               <h2 id="reportPeriodTitle">Monthly Financial Statement</h2>
-              <p>Generated for: <strong>Aarav Sharma</strong> (aarav.sharma@finverse.ai)</p>
+              <p>Generated for: <strong id="reportUserName">—</strong> (<span id="reportUserEmail">—</span>)</p>
             </div>
             <div class="report-period-tag">
               <span class="badge badge-success mb-1">Audited Summary</span>

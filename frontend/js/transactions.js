@@ -287,6 +287,11 @@ async function handleAddOrEditSubmit(e) {
 
     closeModal('transactionModal');
     await loadTransactions();
+
+    // Trigger budget alert check for the affected category (expense transactions only)
+    if (type === 'expense' && window.BudgetAlertEngine) {
+      setTimeout(() => window.BudgetAlertEngine.check(category, { force: true, addedAmount: amount }), 300);
+    }
   } catch (err) {
     console.error('Error saving transaction:', err);
     showToast('Failed to save transaction', 'error');
@@ -304,12 +309,21 @@ function openDeleteModal(txId) {
 async function handleConfirmDelete() {
   if (!currentDeleteId) return;
 
+  // Capture the category before deletion (expense check)
+  const txToDelete = allTransactions.find(t => (t.id || t._id) === currentDeleteId);
+  const deletedCategory = txToDelete && txToDelete.type === 'expense' ? txToDelete.category : null;
+
   try {
     await window.finverseAPI.deleteTransaction(currentDeleteId);
     showToast('Transaction deleted', 'success');
     closeModal('deleteModal');
     currentDeleteId = null;
     await loadTransactions();
+
+    // Re-check budget state for the deleted category (spending may have dropped)
+    if (deletedCategory && window.BudgetAlertEngine) {
+      setTimeout(() => window.BudgetAlertEngine.check(deletedCategory), 400);
+    }
   } catch (err) {
     console.error('Error deleting transaction:', err);
     showToast('Failed to delete transaction', 'error');

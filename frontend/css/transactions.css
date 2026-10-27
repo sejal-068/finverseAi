@@ -23,9 +23,15 @@
   padding: 0.65rem 1rem 0.65rem 2.4rem;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   color: var(--text-primary);
   font-size: 0.9rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-box-wide input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-focus);
 }
 
 .search-box-wide i {
@@ -44,20 +50,25 @@
 }
 
 .filters-group select {
-  padding: 0.65rem 1rem;
+  padding: 0.65rem 1.15rem;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   color: var(--text-primary);
   font-size: 0.85rem;
   cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.filters-group select:focus {
+  border-color: var(--primary);
 }
 
 /* Data Table */
 .table-container {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
@@ -151,9 +162,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.25rem 0.6rem;
+  padding: 0.25rem 0.7rem;
   background: var(--bg-subtle);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
   font-size: 0.75rem;
   color: var(--text-secondary);
 }

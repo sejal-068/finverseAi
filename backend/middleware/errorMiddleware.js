@@ -1,0 +1,61 @@
+/**
+ * Handle 404 Not Found Routes
+ */
+const notFound = (req, res, next) => {
+  const error = new Error(`Route not found: ${req.method} ${req.originalUrl}`);
+  res.status(404);
+  next(error);
+};
+
+/**
+ * Central Error Handler Middleware
+ */
+const errorHandler = (err, req, res, next) => {
+  let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  let message = err.message || 'Internal Server Error';
+
+  // Handle Mongoose Bad ObjectId (CastError)
+  if (err.name === 'CastError' && err.kind === 'ObjectId') {
+    statusCode = 404;
+    message = `Resource not found with id: ${err.value}`;
+  }
+
+  // Handle Mongoose Duplicate Key Error (e.g. unique email)
+  if (err.code === 11000) {
+    statusCode = 400;
+    const field = Object.keys(err.keyValue)[0];
+    message = `Duplicate field value entered: ${field}. Please use another value.`;
+  }
+
+  // Handle Mongoose Validation Error
+  if (err.name === 'ValidationError') {
+    statusCode = 400;
+    message = Object.values(err.errors)
+      .map((val) => val.message)
+      .join(', ');
+  }
+
+  // Handle JWT Error
+  if (err.name === 'JsonWebTokenError') {
+    statusCode = 401;
+    message = 'Invalid authorization token';
+  }
+
+  if (err.name === 'TokenExpiredError') {
+    statusCode = 401;
+    message = 'Authorization token has expired';
+  }
+
+  console.error(`[API Error] ${statusCode} - ${message}`);
+
+  res.status(statusCode).json({
+    success: false,
+    message,
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+  });
+};
+
+module.exports = {
+  notFound,
+  errorHandler,
+};

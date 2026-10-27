@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -19,6 +19,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/alerts.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -28,10 +29,14 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <a href="dashboard.html" class="brand-logo">
-          <div class="brand-icon">
-            <i class="fa-solid fa-chart-line"></i>
+          <div class="finverse-logo-mark">
+            <div class="logo-circle c1"></div>
+            <div class="logo-circle c2"></div>
+            <div class="logo-circle c3"></div>
+            <div class="logo-circle c4"></div>
+            <div class="logo-sparkle"></div>
           </div>
-          <span class="brand-name">Finverse<span>AI</span></span>
+          <span class="brand-name finverse-brand">Finverse<span class="ai-suffix">AI</span></span>
         </a>
       </div>
 
@@ -98,6 +103,20 @@
               </li>
             </ul>
           </div>
+
+          <!-- Administration (Admin Only) -->
+          <div class="nav-group admin-only-nav" style="display: none;">
+            <span class="nav-label">Administration</span>
+            <ul class="nav-list">
+              <li>
+                <a href="user-management.html" class="nav-link">
+                  <i class="fa-solid fa-users-gear"></i>
+                  <span>User Management</span>
+                  <span class="nav-badge" style="background: var(--warning); color: #000;">Admin</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="sidebar-bottom">
@@ -143,7 +162,7 @@
             <i class="fa-solid fa-bars"></i>
           </button>
           <div class="header-greeting">
-            <h2 id="dashboardGreeting">Good Morning, Aarav</h2>
+            <h2 id="dashboardGreeting">Good Morning</h2>
             <p id="dashboardDate">Thursday, 20 August 2026</p>
           </div>
         </div>
@@ -166,9 +185,9 @@
           <!-- User Profile Dropdown Pill -->
           <div class="dropdown">
             <div class="user-profile-pill">
-              <div class="user-avatar">AS</div>
+              <div class="user-avatar"></div>
               <div class="user-info">
-                <span class="user-name">Aarav Sharma</span>
+                <span class="user-name"></span>
                 <span class="user-role">Personal Plan</span>
               </div>
               <i class="fa-solid fa-chevron-down text-muted" style="font-size: 0.75rem;"></i>
@@ -203,7 +222,7 @@
                 <i class="fa-solid fa-wand-magic-sparkles"></i> AI Financial Recommendation
               </div>
               <p class="ai-rec-text" id="aiRecText">
-                Your food expenses increased by 18% this month. Reducing restaurant spending could help you save approximately ₹2,000.
+                Analyzing your financial activity to generate personalized insights...
               </p>
             </div>
           </div>
@@ -222,10 +241,10 @@
                 <i class="fa-solid fa-wallet"></i>
               </div>
             </div>
-            <div class="metric-value" id="metricTotalBalance">₹24,500</div>
-            <div class="metric-trend">
-              <span class="trend-badge up"><i class="fa-solid fa-arrow-up"></i> 12.4%</span>
-              <span>vs last month</span>
+            <div class="metric-value" id="metricTotalBalance">₹0</div>
+            <div class="metric-trend" id="metricBalanceTrendContainer">
+              <span class="trend-badge" id="metricBalanceTrendBadge"><i class="fa-solid fa-wallet"></i> Current</span>
+              <span id="metricBalanceTrendNote">Net Cash Flow</span>
             </div>
           </div>
 
@@ -237,10 +256,10 @@
                 <i class="fa-solid fa-money-bill-trend-up"></i>
               </div>
             </div>
-            <div class="metric-value" id="metricTotalIncome">₹58,000</div>
-            <div class="metric-trend">
-              <span class="trend-badge up"><i class="fa-solid fa-arrow-up"></i> 8.0%</span>
-              <span>2 active sources</span>
+            <div class="metric-value" id="metricTotalIncome">₹0</div>
+            <div class="metric-trend" id="metricIncomeTrendContainer">
+              <span class="trend-badge up" id="metricIncomeTrendBadge"><i class="fa-solid fa-arrow-up"></i> Inflow</span>
+              <span id="metricIncomeSourcesNote">0 sources</span>
             </div>
           </div>
 
@@ -252,10 +271,10 @@
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
               </div>
             </div>
-            <div class="metric-value" id="metricTotalExpenses">₹27,800</div>
-            <div class="metric-trend">
-              <span class="trend-badge down"><i class="fa-solid fa-arrow-up"></i> 4.2%</span>
-              <span>Food & Bills high</span>
+            <div class="metric-value" id="metricTotalExpenses">₹0</div>
+            <div class="metric-trend" id="metricExpenseTrendContainer">
+              <span class="trend-badge down" id="metricExpenseTrendBadge"><i class="fa-solid fa-receipt"></i> Outflow</span>
+              <span id="metricExpenseCategoryNote">No expenses recorded</span>
             </div>
           </div>
 
@@ -267,10 +286,10 @@
                 <i class="fa-solid fa-piggy-bank"></i>
               </div>
             </div>
-            <div class="metric-value" id="metricTotalSavings">₹30,200</div>
-            <div class="metric-trend">
-              <span class="trend-badge up"><i class="fa-solid fa-arrow-up"></i> 52%</span>
-              <span>Healthy Savings Rate</span>
+            <div class="metric-value" id="metricTotalSavings">₹0</div>
+            <div class="metric-trend" id="metricSavingsTrendContainer">
+              <span class="trend-badge up" id="metricSavingsTrendBadge"><i class="fa-solid fa-chart-pie"></i> Rate</span>
+              <span id="metricSavingsRateNote">0% Savings Rate</span>
             </div>
           </div>
         </div>
@@ -304,20 +323,20 @@
                 </h3>
                 <p class="card-subtitle">AI behaviour & cash flow rating</p>
               </div>
-              <span class="badge badge-success font-bold">82/100</span>
+              <span class="badge badge-success font-bold" id="healthScoreBadge">--/100</span>
             </div>
             <div class="card-body">
               <div class="health-score-container">
                 <div class="score-display-row">
                   <div class="score-circle">
                     <div class="score-inner">
-                      <span class="score-num" id="healthScoreNum">82</span>
+                      <span class="score-num" id="healthScoreNum">--</span>
                       <span class="score-denom">/ 100</span>
                     </div>
                   </div>
                   <div class="score-status-info">
-                    <h4 id="healthScoreStatus">Strong Health</h4>
-                    <p id="healthScoreDesc">Your cash flow is stable with strong savings rate and timely bill payments.</p>
+                    <h4 id="healthScoreStatus">Building Profile</h4>
+                    <p id="healthScoreDesc">Add your transactions to see your financial health analysis.</p>
                   </div>
                 </div>
 
@@ -417,6 +436,7 @@
   <!-- Core Scripts -->
   <script src="js/api.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/budget-alerts.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
 </html>

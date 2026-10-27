@@ -10,7 +10,14 @@ let currentBudgetDeleteId = null;
 document.addEventListener('DOMContentLoaded', async () => {
   initEventListeners();
   await loadBudgets();
+  renderAlertHistory();
+
+  // Run budget alert checks on page load (delayed to allow page to settle)
+  if (window.BudgetAlertEngine) {
+    setTimeout(() => window.BudgetAlertEngine.check(), 800);
+  }
 });
+
 
 function initEventListeners() {
   const budgetForm = document.getElementById('budgetForm');
@@ -100,6 +107,9 @@ function renderBudgetsGrid(budgets) {
     if (b.status === 'danger') {
       statusLabel = 'Over Budget';
       statusClass = 'status-danger';
+    } else if (b.status === 'critical') {
+      statusLabel = '80% Used';
+      statusClass = 'status-critical';
     } else if (b.status === 'warning') {
       statusLabel = 'Near Limit';
       statusClass = 'status-warning';
@@ -119,8 +129,8 @@ function renderBudgetsGrid(budgets) {
               </div>
             </div>
             <div class="dropdown">
-              <span class="budget-status-tag">
-                <i class="fa-solid ${b.status === 'danger' ? 'fa-triangle-exclamation' : b.status === 'warning' ? 'fa-circle-exclamation' : 'fa-circle-check'}"></i>
+              <span class="budget-status-tag ${b.status}">
+                <i class="fa-solid ${b.status === 'danger' ? 'fa-triangle-exclamation' : b.status === 'critical' ? 'fa-circle-exclamation' : b.status === 'warning' ? 'fa-exclamation-circle' : 'fa-circle-check'}"></i>
                 ${statusLabel}
               </span>
             </div>
@@ -209,6 +219,11 @@ async function handleBudgetFormSubmit(e) {
 
     closeModal('budgetModal');
     await loadBudgets();
+
+    // Re-check alerts after budget changes
+    if (window.BudgetAlertEngine) {
+      setTimeout(() => window.BudgetAlertEngine.check(category), 600);
+    }
   } catch (err) {
     console.error('Error saving budget:', err);
     showToast('Failed to save budget', 'error');
@@ -224,11 +239,22 @@ async function handleConfirmBudgetDelete() {
   if (!currentBudgetDeleteId) return;
 
   try {
+    // Before deleting, get the category so we can reset its alert state
+    const budgetToDelete = allBudgets.find(b => b.id === currentBudgetDeleteId);
+    const deletedCategory = budgetToDelete ? budgetToDelete.category : null;
+
     await window.finverseAPI.deleteBudget(currentBudgetDeleteId);
     showToast('Budget deleted', 'success');
     closeModal('deleteBudgetModal');
+
+    // Reset localStorage alert state so alerts can fire again if a new budget is set
+    if (deletedCategory && window.BudgetAlertEngine) {
+      window.BudgetAlertEngine.resetCategoryState(deletedCategory);
+    }
+
     currentBudgetDeleteId = null;
     await loadBudgets();
+    renderAlertHistory();
   } catch (err) {
     console.error('Error deleting budget:', err);
     showToast('Failed to delete budget', 'error');
@@ -238,3 +264,55 @@ async function handleConfirmBudgetDelete() {
 window.openCreateBudgetModal = openCreateBudgetModal;
 window.openEditBudgetModal = openEditBudgetModal;
 window.openDeleteBudgetModal = openDeleteBudgetModal;
+
+/* ==========================================================================
+   Alert History Panel
+   ========================================================================== */
+function renderAlertHistory() {
+  const container = document.getElementById('alertHistoryList');
+  if (!container) return;
+
+  if (!window.BudgetAlertEngine) {
+    container.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;">Alert engine not loaded.</p>';
+    return;
+  }
+
+  const history = window.BudgetAlertEngine.getAlertHistory();
+
+  if (!history || history.length === 0) {
+    container.innerHTML = '<div class="empty-alert-state"><i class="fa-solid fa-bell-slash" style="font-size:1.5rem;color:var(--text-muted);margin-bottom:0.5rem;"></i><p style="color:var(--text-muted);font-size:0.85rem;">No alerts yet. Alerts will appear here when your budget thresholds are crossed.</p></div>';
+    return;
+  }
+
+  const typeConfig = {
+    danger:   { icon: '🚨', label: 'Over Budget',     color: 'var(--danger)' },
+    critical: { icon: '🔔', label: '80% Critical',    color: '#E8730A' },
+    warning:  { icon: '⚠️', label: '70% Warning',    color: 'var(--warning)' },
+  };
+
+  container.innerHTML = history.map(item => {
+    const cfg = typeConfig[item.type] || { icon: 'ℹ️', label: item.type, color: 'var(--primary)' };
+    const date = new Date(item.timestamp);
+    const dateStr = date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    return `
+      <div class="alert-history-item alert-type-${item.type}" style="border-left:3px solid ${cfg.color};">
+        <div class="alert-history-icon">${cfg.icon}</div>
+        <div class="alert-history-info">
+          <div class="alert-history-title">${item.category} — ${cfg.label}</div>
+          <div class="alert-history-sub">Spent: ${formatINR(item.spent)} of ${formatINR(item.limit)} (${item.percentage}%)</div>
+        </div>
+        <div class="alert-history-time">${dateStr}</div>
+      </div>`;
+  }).join('');
+}
+
+function clearAllAlerts() {
+  if (window.BudgetAlertEngine) {
+    window.BudgetAlertEngine.clearAlertHistory();
+  }
+  renderAlertHistory();
+  showToast('Alert history cleared', 'success');
+}
+
+window.renderAlertHistory = renderAlertHistory;
+window.clearAllAlerts = clearAllAlerts;

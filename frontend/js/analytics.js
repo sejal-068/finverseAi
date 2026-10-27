@@ -47,7 +47,7 @@ async function loadAnalyticsData(range) {
     renderCashFlowChart(analytics.cashFlowTrend);
     renderCategoryDistributionChart(categories);
     renderSavingsTrendChart(analytics.cashFlowTrend);
-    renderDailySpendingChart();
+    renderDailySpendingChart(analytics.dailySpending || {});
 
   } catch (err) {
     console.error('Error loading analytics:', err);
@@ -76,19 +76,19 @@ function renderCashFlowChart(trendData) {
         {
           label: 'Total Inflow (Income)',
           data: incomeData,
-          backgroundColor: '#10B981',
+          backgroundColor: '#22A06B',
           borderRadius: 6
         },
         {
           label: 'Total Outflow (Expenses)',
           data: expenseData,
-          backgroundColor: '#EF4444',
+          backgroundColor: '#E45858',
           borderRadius: 6
         },
         {
           label: 'Net Savings',
           data: savingsData,
-          backgroundColor: '#6366F1',
+          backgroundColor: '#5B4BDB',
           borderRadius: 6
         }
       ]
@@ -168,11 +168,11 @@ function renderSavingsTrendChart(trendData) {
       datasets: [{
         label: 'Monthly Net Savings (₹)',
         data: trendData.map(d => d.savings),
-        borderColor: '#10B981',
-        backgroundColor: 'rgba(16, 185, 129, 0.15)',
+        borderColor: '#22A06B',
+        backgroundColor: 'rgba(34, 160, 107, 0.12)',
         tension: 0.35,
         fill: true,
-        pointBackgroundColor: '#10B981',
+        pointBackgroundColor: '#22A06B',
         pointRadius: 5
       }]
     },
@@ -199,7 +199,7 @@ function renderSavingsTrendChart(trendData) {
   });
 }
 
-function renderDailySpendingChart() {
+function renderDailySpendingChart(dailyMap = {}) {
   const ctx = document.getElementById('analyticsDailySpendingChart');
   if (!ctx) return;
 
@@ -207,9 +207,24 @@ function renderDailySpendingChart() {
     dailySpendingChartInstance.destroy();
   }
 
-  // Simulated 14-day spending distribution
-  const days = ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug', '8 Aug', '9 Aug', '10 Aug', '11 Aug', '12 Aug', '13 Aug', '14 Aug'];
-  const amounts = [500, 12000, 300, 450, 800, 1200, 4200, 250, 600, 2500, 400, 3500, 200, 1800];
+  // Get real user days and amounts from backend
+  const entries = Object.entries(dailyMap).sort((a, b) => a[0].localeCompare(b[0])).slice(-14);
+  let days = [];
+  let amounts = [];
+
+  if (entries.length > 0) {
+    days = entries.map(([dateStr]) => {
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    });
+    amounts = entries.map(([, amt]) => amt);
+  } else {
+    days = ['No Data'];
+    amounts = [0];
+  }
+
+  const maxVal = Math.max(...amounts, 0);
+  const threshold = maxVal > 0 ? maxVal * 0.7 : 3000;
 
   dailySpendingChartInstance = new Chart(ctx, {
     type: 'bar',
@@ -218,7 +233,7 @@ function renderDailySpendingChart() {
       datasets: [{
         label: 'Daily Outflow',
         data: amounts,
-        backgroundColor: amounts.map(amt => amt > 3000 ? '#EF4444' : '#6366F1'),
+        backgroundColor: amounts.map(amt => amt >= threshold && amt > 0 ? '#E45858' : '#5B4BDB'),
         borderRadius: 4
       }]
     },
@@ -236,7 +251,7 @@ function renderDailySpendingChart() {
       scales: {
         y: {
           beginAtZero: true,
-          ticks: { callback: (v) => '₹' + v },
+          ticks: { callback: (v) => '₹' + v.toLocaleString('en-IN') },
           grid: { color: 'rgba(226, 232, 240, 0.6)' }
         },
         x: { grid: { display: false } }
@@ -244,3 +259,4 @@ function renderDailySpendingChart() {
     }
   });
 }
+

@@ -1,5 +1,6 @@
 /* ==========================================================================
    FinverseAI - Analytics Page Styles
+   Aesthetic: Soft Pastel Fintech with Pill Filters & Clean Minimal Cards
    ========================================================================== */
 
 /* Date Range Pill Filters */
@@ -8,14 +9,15 @@
   align-items: center;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  padding: 0.25rem;
-  border-radius: var(--radius-md);
-  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: var(--radius-full);
+  gap: 0.3rem;
+  box-shadow: var(--shadow-xs);
 }
 
 .range-pill-btn {
-  padding: 0.45rem 0.9rem;
-  border-radius: var(--radius-sm);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
   background: transparent;
   color: var(--text-secondary);
   font-size: 0.825rem;
@@ -26,11 +28,13 @@
 
 .range-pill-btn:hover {
   color: var(--text-primary);
+  background: var(--bg-subtle);
 }
 
 .range-pill-btn.active {
   background: var(--primary);
   color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(91, 75, 219, 0.28);
 }
 
 /* Analytics KPI Grid */
@@ -44,27 +48,36 @@
 .kpi-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.15rem;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(91, 75, 219, 0.25);
 }
 
 .kpi-label {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   margin-bottom: 0.35rem;
 }
 
 .kpi-val {
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-size: 1.45rem;
+  font-weight: 700;
   font-family: var(--font-heading);
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .kpi-sub {

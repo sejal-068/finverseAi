@@ -1,5 +1,6 @@
 /* ==========================================================================
-   FinverseAI - Authentication Pages (Login, Signup, Forgot Password)
+   FinverseAI - Authentication Pages (Login, Signup, Forgot Password, Reset)
+   Aesthetic: Soft, Light, Warm Ivory, Delicate Pastel Glows & Rounded Cards
    ========================================================================== */
 
 .auth-page {
@@ -7,21 +8,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-body);
-  padding: 2rem 1rem;
+  background-color: var(--bg-body);
+  background-image: 
+    radial-gradient(ellipse at 15% 10%, rgba(91, 75, 219, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 15%, rgba(124, 108, 242, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 88%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 75%, rgba(91, 75, 219, 0.05) 0%, transparent 45%);
+  background-attachment: fixed;
+  padding: 2.5rem 1.25rem;
   position: relative;
+  overflow-x: hidden;
+}
+
+[data-theme="dark"] .auth-page {
+  background-color: var(--bg-body);
+  background-image: 
+    radial-gradient(ellipse at 12% 15%, rgba(91, 75, 219, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 88% 20%, rgba(124, 108, 242, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 85%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
 }
 
 .auth-page::before {
   content: '';
   position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(79, 70, 229, 0.04) 70%, transparent 100%);
+  top: -120px;
+  right: -120px;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(124, 108, 242, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
+  filter: blur(50px);
+}
+
+.auth-page::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(91, 75, 219, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(50px);
 }
 
 .auth-container {
@@ -39,33 +69,52 @@
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
-  padding: 2.5rem;
+  padding: 2.75rem 2.5rem;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+}
+
+[data-theme="dark"] .auth-card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
   box-shadow: var(--shadow-xl);
 }
 
 .auth-header {
   text-align: center;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .auth-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
   text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.auth-brand:hover {
+  transform: scale(1.02);
 }
 
 .auth-header h1 {
-  font-size: 1.65rem;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.3px;
 }
 
 .auth-header p {
   color: var(--text-muted);
   font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .auth-form {
@@ -78,10 +127,11 @@
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1.6rem 0;
   color: var(--text-muted);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
 
 .auth-divider::before,
@@ -105,20 +155,23 @@
   justify-content: center;
   gap: 0.75rem;
   font-weight: 600;
-  padding: 0.75rem 1.25rem;
+  font-size: 0.92rem;
+  padding: 0.8rem 1.25rem;
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
   cursor: pointer;
+  box-shadow: var(--shadow-xs);
 }
 
 .btn-social:hover {
   background: var(--bg-subtle);
-  border-color: var(--text-muted);
+  border-color: rgba(91, 75, 219, 0.35);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
-.btn-social img {
-  width: 20px;
-  height: 20px;
+.btn-social i {
+  font-size: 1.05rem;
 }
 
 .auth-links {
@@ -130,13 +183,20 @@
 
 .auth-footer {
   text-align: center;
-  margin-top: 1.75rem;
+  margin-top: 1.85rem;
   font-size: 0.875rem;
   color: var(--text-secondary);
 }
 
 .auth-footer a {
   font-weight: 600;
+  color: var(--primary);
+  transition: color var(--transition-fast);
+}
+
+.auth-footer a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
 }
 
 /* Password Input with eye toggle */
@@ -152,7 +212,9 @@
   background: transparent;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.35rem;
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
 }
 
 .password-toggle-btn:hover {
@@ -210,7 +272,7 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.65rem 0.85rem;
+  padding: 0.7rem 0.9rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   background: var(--bg-surface);
@@ -227,7 +289,8 @@
 
 .goal-option input[type="radio"]:checked + .goal-card {
   border-color: var(--primary);
-  background: var(--primary-light);
+  background: var(--primary-subtle);
   color: var(--primary);
   font-weight: 600;
+  box-shadow: 0 0 0 2px rgba(91, 75, 219, 0.18);
 }

@@ -24,18 +24,19 @@
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 1.35rem;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   position: relative;
 }
 
 .category-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+  border-color: rgba(91, 75, 219, 0.25);
 }
 
 .cat-card-header {
@@ -78,11 +79,12 @@
 }
 
 .cat-spend-amount {
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.65rem;
+  font-weight: 700;
   font-family: var(--font-heading);
   color: var(--text-primary);
   margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
 }
 
 .cat-progress-section {
@@ -137,6 +139,6 @@
 
 .icon-option:hover, .icon-option.selected {
   border-color: var(--primary);
-  background: var(--primary-light);
+  background: var(--primary-subtle);
   color: var(--primary);
 }
